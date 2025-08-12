@@ -1,0 +1,442 @@
+// Linearity Website JavaScript
+class LinearityWebsite {
+    constructor() {
+        this.init();
+    }
+
+    init() {
+        this.setupNavigation();
+        this.setupScrollEffects();
+        this.setupContactForm();
+        this.setupSocialLinks();
+        this.setupSmoothScrolling();
+        this.setupAnimations();
+    }
+
+    // Navigation functionality
+    setupNavigation() {
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        // Toggle mobile menu
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+            });
+
+            // Close menu when clicking on a link
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+
+        // Active nav link on scroll
+        this.updateActiveNavLink();
+        window.addEventListener('scroll', () => this.updateActiveNavLink());
+    }
+
+    updateActiveNavLink() {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        const scrollPos = window.scrollY + 100;
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+
+    // Scroll effects
+    setupScrollEffects() {
+        const navbar = document.querySelector('.navbar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(0, 0, 0, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
+            } else {
+                navbar.style.background = 'rgba(0, 0, 0, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    }
+
+    // Contact form functionality
+    setupContactForm() {
+        const form = document.getElementById('contact-form');
+        
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                this.handleContactForm(form);
+            });
+        }
+    }
+
+    async handleContactForm(form) {
+        const formData = new FormData(form);
+        const data = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            message: formData.get('message')
+        };
+
+        // Basic validation
+        if (!data.name || !data.email || !data.message) {
+            this.showNotification('Per favore, compila tutti i campi.', 'error');
+            return;
+        }
+
+        if (!this.isValidEmail(data.email)) {
+            this.showNotification('Per favore, inserisci un indirizzo email valido.', 'error');
+            return;
+        }
+
+        // Show loading state
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalText = submitButton.textContent;
+        submitButton.textContent = 'Invio in corso...';
+        submitButton.disabled = true;
+
+        try {
+            // Simulate form submission (replace with actual endpoint)
+            await this.simulateFormSubmission(data);
+            
+            this.showNotification('Messaggio inviato con successo! Ti contatteremo presto.', 'success');
+            form.reset();
+        } catch (error) {
+            this.showNotification('Errore nell\'invio del messaggio. Riprova più tardi.', 'error');
+        } finally {
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+        }
+    }
+
+    simulateFormSubmission(data) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                // Simulate success/error
+                Math.random() > 0.1 ? resolve() : reject();
+            }, 2000);
+        });
+    }
+
+    isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    // Social links setup
+    setupSocialLinks() {
+        // Replace these with actual social media URLs
+        const socialLinks = {
+            telegram: 'https://t.me/linearity_trading', // Replace with actual Telegram group
+            instagram: 'https://instagram.com/linearity_trading',
+            tiktok: 'https://tiktok.com/@linearity_trading'
+        };
+
+        // Update Telegram buttons
+        const telegramButtons = document.querySelectorAll('#telegram-btn, #social-telegram, #contact-telegram, #nav-telegram, #footer-telegram');
+        telegramButtons.forEach(button => {
+            button.href = socialLinks.telegram;
+            button.target = '_blank';
+            button.rel = 'noopener noreferrer';
+        });
+
+        // Update navbar social links
+        const navInstagram = document.getElementById('nav-instagram');
+        const navTiktok = document.getElementById('nav-tiktok');
+        
+        if (navInstagram) {
+            navInstagram.href = socialLinks.instagram;
+            navInstagram.target = '_blank';
+            navInstagram.rel = 'noopener noreferrer';
+        }
+        
+        if (navTiktok) {
+            navTiktok.href = socialLinks.tiktok;
+            navTiktok.target = '_blank';
+            navTiktok.rel = 'noopener noreferrer';
+        }
+
+        // Update footer social links
+        const footerInstagram = document.getElementById('footer-instagram');
+        const footerTiktok = document.getElementById('footer-tiktok');
+        
+        if (footerInstagram) {
+            footerInstagram.href = socialLinks.instagram;
+            footerInstagram.target = '_blank';
+            footerInstagram.rel = 'noopener noreferrer';
+        }
+        
+        if (footerTiktok) {
+            footerTiktok.href = socialLinks.tiktok;
+            footerTiktok.target = '_blank';
+            footerTiktok.rel = 'noopener noreferrer';
+        }
+    }
+
+    // Smooth scrolling for anchor links
+    setupSmoothScrolling() {
+        const links = document.querySelectorAll('a[href^="#"]');
+        
+        links.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    const offsetTop = targetSection.offsetTop - 80; // Account for fixed navbar
+                    
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    }
+
+    // Animation setup
+    setupAnimations() {
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        const animateElements = document.querySelectorAll('.about-card, .step, .social-card, .contact-item');
+        animateElements.forEach(el => observer.observe(el));
+
+        // Add staggered animation delays
+        const aboutCards = document.querySelectorAll('.about-card');
+        aboutCards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.2}s`;
+        });
+
+        const socialCards = document.querySelectorAll('.social-card');
+        socialCards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+    }
+
+    // Notification system
+    showNotification(message, type = 'info') {
+        // Remove existing notification
+        const existingNotification = document.querySelector('.notification');
+        if (existingNotification) {
+            existingNotification.remove();
+        }
+
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = `notification notification-${type}`;
+        notification.innerHTML = `
+            <div class="notification-content">
+                <span class="notification-message">${message}</span>
+                <button class="notification-close">&times;</button>
+            </div>
+        `;
+
+        // Add styles
+        notification.style.cssText = `
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: ${type === 'success' ? '#4CAF50' : type === 'error' ? '#f44336' : '#2196F3'};
+            color: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            z-index: 10000;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            max-width: 400px;
+            word-wrap: break-word;
+        `;
+
+        const content = notification.querySelector('.notification-content');
+        content.style.cssText = `
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        `;
+
+        const closeBtn = notification.querySelector('.notification-close');
+        closeBtn.style.cssText = `
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        `;
+
+        document.body.appendChild(notification);
+
+        // Animate in
+        setTimeout(() => {
+            notification.style.transform = 'translateX(0)';
+        }, 100);
+
+        // Auto remove after 5 seconds
+        const autoRemove = setTimeout(() => {
+            this.removeNotification(notification);
+        }, 5000);
+
+        // Manual remove on close button click
+        closeBtn.addEventListener('click', () => {
+            clearTimeout(autoRemove);
+            this.removeNotification(notification);
+        });
+    }
+
+    removeNotification(notification) {
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }
+
+    // Utility methods
+    debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    throttle(func, limit) {
+        let inThrottle;
+        return function() {
+            const args = arguments;
+            const context = this;
+            if (!inThrottle) {
+                func.apply(context, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        }
+    }
+}
+
+// Initialize website functionality when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new LinearityWebsite();
+});
+
+// Handle page visibility changes
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        document.title = '🔄 Torna su Linearity | Trading System';
+    } else {
+        document.title = 'Linearity - Sistema di Trading Professionale';
+    }
+});
+
+// Add loading animation for images
+window.addEventListener('load', () => {
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        img.classList.add('loaded');
+    });
+});
+
+// Error handling for missing images
+window.addEventListener('error', (e) => {
+    if (e.target.tagName === 'IMG') {
+        console.warn('Image failed to load:', e.target.src);
+        // You could replace with a placeholder image here
+        // e.target.src = 'images/placeholder.png';
+    }
+}, true);
+
+// Simple analytics tracking (replace with actual analytics if needed)
+const trackEvent = (eventName, properties = {}) => {
+    console.log(`Event: ${eventName}`, properties);
+    // Replace with actual analytics tracking
+    // gtag('event', eventName, properties);
+};
+
+// Track key interactions
+document.addEventListener('click', (e) => {
+    if (e.target.matches('.btn-primary, .telegram-btn')) {
+        trackEvent('telegram_click', { location: e.target.id || 'unknown' });
+    }
+    if (e.target.matches('.social-card')) {
+        trackEvent('social_click', { platform: e.target.className.split(' ').pop() });
+    }
+    if (e.target.closest('.nav-social-link')) {
+        const platform = e.target.closest('.nav-social-link').getAttribute('title')?.toLowerCase();
+        trackEvent('nav_social_click', { platform: platform });
+    }
+});
+
+// Performance monitoring
+if ('performance' in window) {
+    window.addEventListener('load', () => {
+        const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+        console.log(`Page load time: ${loadTime}ms`);
+    });
+}
+
+// Service Worker registration (uncomment if you want offline functionality)
+/*
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(registration => console.log('SW registered'))
+            .catch(registrationError => console.log('SW registration failed'));
+    });
+}
+*/
