@@ -26,15 +26,15 @@
     
     /* Typography */
     --font-family: 'Inter', sans-serif;
-    --font-size-xs: 0.75rem;
-    --font-size-sm: 0.875rem;
-    --font-size-base: 1rem;
-    --font-size-lg: 1.125rem;
-    --font-size-xl: 1.25rem;
-    --font-size-2xl: 1.5rem;
-    --font-size-3xl: 1.875rem;
-    --font-size-4xl: 2.25rem;
-    --font-size-5xl: 3rem;
+    --font-size-xs: 0.875rem;
+    --font-size-sm: 1rem;
+    --font-size-base: 1.125rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.5rem;
+    --font-size-2xl: 1.875rem;
+    --font-size-3xl: 2.25rem;
+    --font-size-4xl: 2.75rem;
+    --font-size-5xl: 3.5rem;
     
     /* Spacing */
     --spacing-xs: 0.5rem;
@@ -98,8 +98,10 @@ h2 { font-size: var(--font-size-3xl); }
 h3 { font-size: var(--font-size-xl); }
 
 p {
+    font-size: var(--font-size-base);
     color: var(--text-light);
     margin-bottom: var(--spacing-sm);
+    line-height: 1.6;
 }
 
 /* Buttons */
@@ -405,12 +407,14 @@ section {
 }
 
 .section-header h2 {
+    font-size: var(--font-size-3xl);
     margin-bottom: var(--spacing-sm);
 }
 
 .section-header p {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-xl);
     color: var(--text-light);
+    line-height: 1.6;
 }
 
 /* About Section */
@@ -474,12 +478,15 @@ section {
 }
 
 .about-card h3 {
+    font-size: var(--font-size-xl);
     margin-bottom: var(--spacing-sm);
     color: var(--white);
 }
 
 .about-card p {
+    font-size: var(--font-size-base);
     color: var(--light-gray);
+    line-height: 1.6;
 }
 
 /* Guide Section */
@@ -528,12 +535,15 @@ section {
 }
 
 .step-content h3 {
+    font-size: var(--font-size-xl);
     margin-bottom: var(--spacing-xs);
     color: var(--white);
 }
 
 .step-content p {
+    font-size: var(--font-size-base);
     color: var(--light-gray);
+    line-height: 1.6;
 }
 
 /* Results Section */
@@ -1222,24 +1232,41 @@ section {
     }
     
     .nav-social-link svg {
-        width: 24px;
-        height: 24px;
+        width: 16px !important;
+        height: 16px !important;
+        max-width: 16px;
+        max-height: 16px;
+    }
+    
+    .nav-logo {
+        align-items: center;
+        justify-content: flex-start;
+    }
+    
+    .logo-text {
+        font-size: 1.5rem;
+        line-height: 1;
+    }
+    
+    .nav-social-link {
+        width: 32px;
+        height: 32px;
     }
     
     .hamburger {
         display: flex;
         z-index: 1001;
         position: relative;
-        width: 30px;
-        height: 25px;
+        width: 24px;
+        height: 20px;
         align-items: center;
         justify-content: center;
     }
     
     .hamburger span {
         position: absolute;
-        width: 25px;
-        height: 3px;
+        width: 20px;
+        height: 2px;
         background: var(--rich-gold);
         border-radius: 2px;
         transition: all 0.3s ease;
@@ -1250,16 +1277,16 @@ section {
     }
     
     .hamburger span:nth-child(2) {
-        top: 11px;
+        top: 9px;
     }
     
     .hamburger span:nth-child(3) {
-        top: 22px;
+        top: 18px;
     }
     
     .hamburger.active span:nth-child(1) {
         transform: rotate(45deg);
-        top: 11px;
+        top: 9px;
     }
     
     .hamburger.active span:nth-child(2) {
@@ -1269,7 +1296,7 @@ section {
     
     .hamburger.active span:nth-child(3) {
         transform: rotate(-45deg);
-        top: 11px;
+        top: 9px;
     }
     
     .hero-buttons {
@@ -1434,8 +1461,14 @@ section {
         height: 30px;
     }
     
+    .nav-logo {
+        align-items: center;
+        justify-content: flex-start;
+    }
+    
     .logo-text {
-        font-size: var(--font-size-lg);
+        font-size: 1.5rem;
+        line-height: 1;
     }
     
     /* About cards ultra mobile */
