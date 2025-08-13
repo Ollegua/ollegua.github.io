@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://linearityfx.tech/sitemap.xml
+
+# Allow crawling of CSS and JS files
+Allow: /style.css
+Allow: /script.js
+Allow: /linearity-logo.png
+
+# Disallow sensitive areas (if any in future)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Crawl delay (optional, good for server performance)
+Crawl-delay: 1
