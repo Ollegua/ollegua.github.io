@@ -165,13 +165,15 @@ class LinearityWebsite {
         }
         
         const recaptchaResponse = grecaptcha.getResponse();
-        if (!recaptchaResponse) {
+        if (!recaptchaResponse || recaptchaResponse.length < 20) {
             this.showNotification('🤖 Per favore, completa la verifica "Non sono un robot".', 'error');
             return;
         }
 
-        // Aggiungi reCAPTCHA token per validazione server-side
-        data.g_recaptcha_response = recaptchaResponse;
+        console.log('reCAPTCHA token length:', recaptchaResponse.length);
+
+        // Aggiungi reCAPTCHA token nel formato corretto per EmailJS
+        data['g-recaptcha-response'] = recaptchaResponse;
 
         // Show loading state
         const submitButton = form.querySelector('button[type="submit"]');
@@ -189,7 +191,8 @@ class LinearityWebsite {
                 from_name: data.from_name,
                 from_email: data.from_email,
                 message: data.message.substring(0, 50) + '...',
-                current_date: data.current_date
+                current_date: data.current_date,
+                'g-recaptcha-response': data['g-recaptcha-response'] ? 'Token presente (' + data['g-recaptcha-response'].length + ' chars)' : 'Token mancante'
             });
 
             // Invia email tramite EmailJS
