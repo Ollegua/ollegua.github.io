@@ -1740,3 +1740,133 @@ textarea:focus {
 .loading {
     animation: pulse 2s infinite;
 }
+
+/* ============================================
+   EMAILJS FORM ENHANCEMENTS
+   ============================================ */
+
+/* Loading spinner */
+.loading-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Form validation states */
+.contact-form input:invalid,
+.contact-form textarea:invalid {
+    border-color: #ff4444;
+    box-shadow: 0 0 10px rgba(255, 68, 68, 0.3);
+}
+
+.contact-form input:valid,
+.contact-form textarea:valid {
+    border-color: var(--primary-gold);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+}
+
+/* Button disabled state */
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.btn-primary:disabled:hover {
+    transform: none !important;
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+}
+
+/* Form messages */
+.form-message {
+    padding: 1.2rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 12px;
+    font-weight: 500;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid;
+    font-family: 'Inter', sans-serif;
+}
+
+.form-message--success {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(184, 134, 11, 0.1));
+    color: var(--primary-gold);
+    border-color: var(--primary-gold);
+}
+
+.form-message--error {
+    background: linear-gradient(135deg, rgba(255, 68, 68, 0.1), rgba(204, 0, 0, 0.1));
+    color: #ff4444;
+    border-color: #ff4444;
+}
+
+/* Enhanced notification styles */
+.notification {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 500;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* reCAPTCHA Styling */
+.form-submit-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-wrap: nowrap;
+}
+
+.g-recaptcha {
+    transform: scale(0.9);
+    transform-origin: left center;
+    flex-shrink: 0;
+}
+
+/* Button alignment in row */
+.form-submit-row .btn-primary {
+    flex-shrink: 0;
+    min-width: 180px;
+}
+
+/* reCAPTCHA responsive */
+@media (max-width: 900px) {
+    .form-submit-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+    
+    .g-recaptcha {
+        transform: scale(0.85);
+        transform-origin: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .g-recaptcha {
+        transform: scale(0.77);
+        transform-origin: center;
+    }
+    
+    .form-submit-row {
+        gap: 1rem;
+    }
+}
+
+/* Dark theme compatibility */
+.g-recaptcha iframe {
+    border-radius: 8px;
+}

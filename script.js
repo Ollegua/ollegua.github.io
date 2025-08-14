@@ -2,10 +2,10 @@
 class LinearityWebsite {
     constructor() {
         this.emailjsConfig = {
-            // Sostituisci questi valori con quelli della tua configurazione EmailJS
-            serviceID: 'service_linearityfx',  // Da ottenere dalla dashboard EmailJS
-            templateID: 'template_linearity_contact',  // Da ottenere dalla dashboard EmailJS
-            publicKey: 'YOUR_PUBLIC_KEY_HERE'  // Da ottenere dalla dashboard EmailJS
+            // Credenziali EmailJS per linearityfx.tech
+            serviceID: 'service_1utctbq',
+            templateID: 'template_xdncv7s',
+            publicKey: 'YGMiwGEY4FrFD2ygh'
         };
         this.init();
         this.initEmailJS();
@@ -120,11 +120,26 @@ class LinearityWebsite {
 
     async handleContactForm(form) {
         const formData = new FormData(form);
+        
+        // Genera data e ora italiana in formato compatto
+        const now = new Date();
+        const italianDate = now.toLocaleDateString('it-IT', {
+            day: '2-digit',
+            month: '2-digit', 
+            year: 'numeric',
+            timeZone: 'Europe/Rome'
+        }) + ' - ' + now.toLocaleTimeString('it-IT', {
+            hour: '2-digit',
+            minute: '2-digit',
+            timeZone: 'Europe/Rome'
+        });
+        
         const data = {
             from_name: formData.get('name'),
             from_email: formData.get('email'),
             message: formData.get('message'),
-            to_email: 'info@linearityfx.tech'
+            to_email: 'info@linearityfx.tech',
+            current_date: italianDate
         };
 
         // Basic validation
@@ -142,6 +157,21 @@ class LinearityWebsite {
             this.showNotification('Il messaggio deve contenere almeno 10 caratteri.', 'error');
             return;
         }
+
+        // Validazione reCAPTCHA
+        if (typeof grecaptcha === 'undefined') {
+            this.showNotification('⚠️ Sistema di sicurezza non disponibile. Riprova tra qualche secondo.', 'error');
+            return;
+        }
+        
+        const recaptchaResponse = grecaptcha.getResponse();
+        if (!recaptchaResponse) {
+            this.showNotification('🤖 Per favore, completa la verifica "Non sono un robot".', 'error');
+            return;
+        }
+
+        // Aggiungi reCAPTCHA token ai dati
+        data.recaptcha_token = recaptchaResponse;
 
         // Show loading state
         const submitButton = form.querySelector('button[type="submit"]');
@@ -165,6 +195,11 @@ class LinearityWebsite {
             console.log('Email inviata con successo:', response.status, response.text);
             this.showNotification('✅ Messaggio inviato con successo! Ti contatteremo presto a ' + data.from_email, 'success');
             form.reset();
+            
+            // Reset reCAPTCHA
+            if (typeof grecaptcha !== 'undefined') {
+                grecaptcha.reset();
+            }
             
             // Track successful form submission
             if (typeof gtag !== 'undefined') {

@@ -90,6 +90,9 @@
       gtag('config', 'G-WTGVM9BTYX');
     </script>
     
+    <!-- Google reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -359,7 +362,12 @@
                             <textarea id="message" name="message" rows="5" required></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary">Invia Messaggio</button>
+                        <div class="form-submit-row">
+                            <!-- Google reCAPTCHA Widget -->
+                            <div class="g-recaptcha" data-sitekey="6LctC6YrAAAAAKf15wfxnTCNtP7wzMPEAyyJC83t" data-theme="dark" data-size="normal"></div>
+                            
+                            <button type="submit" class="btn btn-primary">Invia Messaggio</button>
+                        </div>
                     </form>
                 </div>
             </div>
