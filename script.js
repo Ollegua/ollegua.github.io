@@ -1,7 +1,25 @@
 // Linearity Website JavaScript
 class LinearityWebsite {
     constructor() {
+        this.emailjsConfig = {
+            // Sostituisci questi valori con quelli della tua configurazione EmailJS
+            serviceID: 'service_linearityfx',  // Da ottenere dalla dashboard EmailJS
+            templateID: 'template_linearity_contact',  // Da ottenere dalla dashboard EmailJS
+            publicKey: 'YOUR_PUBLIC_KEY_HERE'  // Da ottenere dalla dashboard EmailJS
+        };
         this.init();
+        this.initEmailJS();
+    }
+
+    // Inizializza EmailJS
+    initEmailJS() {
+        // Verifica se EmailJS è caricato
+        if (typeof emailjs !== 'undefined') {
+            emailjs.init(this.emailjsConfig.publicKey);
+            console.log('EmailJS initialized successfully');
+        } else {
+            console.error('EmailJS library not loaded');
+        }
     }
 
     init() {
@@ -103,49 +121,75 @@ class LinearityWebsite {
     async handleContactForm(form) {
         const formData = new FormData(form);
         const data = {
-            name: formData.get('name'),
-            email: formData.get('email'),
-            message: formData.get('message')
+            from_name: formData.get('name'),
+            from_email: formData.get('email'),
+            message: formData.get('message'),
+            to_email: 'info@linearityfx.tech'
         };
 
         // Basic validation
-        if (!data.name || !data.email || !data.message) {
+        if (!data.from_name || !data.from_email || !data.message) {
             this.showNotification('Per favore, compila tutti i campi.', 'error');
             return;
         }
 
-        if (!this.isValidEmail(data.email)) {
+        if (!this.isValidEmail(data.from_email)) {
             this.showNotification('Per favore, inserisci un indirizzo email valido.', 'error');
+            return;
+        }
+
+        if (data.message.length < 10) {
+            this.showNotification('Il messaggio deve contenere almeno 10 caratteri.', 'error');
             return;
         }
 
         // Show loading state
         const submitButton = form.querySelector('button[type="submit"]');
         const originalText = submitButton.textContent;
-        submitButton.textContent = 'Invio in corso...';
+        submitButton.innerHTML = '<span class="loading-spinner"></span> Invio in corso...';
         submitButton.disabled = true;
 
         try {
-            // Simulate form submission (replace with actual endpoint)
-            await this.simulateFormSubmission(data);
-            
-            this.showNotification('Messaggio inviato con successo! Ti contatteremo presto.', 'success');
+            // Verifica se EmailJS è disponibile
+            if (typeof emailjs === 'undefined') {
+                throw new Error('EmailJS non è disponibile');
+            }
+
+            // Invia email tramite EmailJS
+            const response = await emailjs.send(
+                this.emailjsConfig.serviceID,
+                this.emailjsConfig.templateID,
+                data
+            );
+
+            console.log('Email inviata con successo:', response.status, response.text);
+            this.showNotification('✅ Messaggio inviato con successo! Ti contatteremo presto a ' + data.from_email, 'success');
             form.reset();
+            
+            // Track successful form submission
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'form_submit', {
+                    event_category: 'Contact',
+                    event_label: 'EmailJS Success',
+                    value: 1
+                });
+            }
+            
         } catch (error) {
-            this.showNotification('Errore nell\'invio del messaggio. Riprova più tardi.', 'error');
+            console.error('Errore invio email:', error);
+            
+            // Messaggio di errore più informativo
+            if (error.message.includes('EmailJS')) {
+                this.showNotification('⚠️ Servizio email non disponibile. Contattaci direttamente su Telegram.', 'error');
+            } else {
+                this.showNotification('❌ Errore nell\'invio del messaggio. Riprova o contattaci su Telegram.', 'error');
+            }
+            
         } finally {
-            submitButton.textContent = originalText;
+            // Reset button
+            submitButton.innerHTML = originalText;
             submitButton.disabled = false;
         }
-    }
-
-    simulateFormSubmission(data) {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                // Simulate success/error
-                Math.random() > 0.1 ? resolve() : reject();
-            }, 2000);
-        });
     }
 
     isValidEmail(email) {
@@ -410,14 +454,44 @@ const trackEvent = (eventName, properties = {}) => {
 
 // Track key interactions
 document.addEventListener('click', (e) => {
-    if (e.target.matches('.btn-primary, .telegram-btn')) {
+    if (e.target.matches('.btn-primary, .telegram-btn') || e.target.closest('[href*="t.me"]')) {
+        // Track Telegram clicks
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'click', {
+                event_category: 'Social',
+                event_label: 'Telegram',
+                event_location: e.target.id || e.target.className || 'telegram_button'
+            });
+        }
         trackEvent('telegram_click', { location: e.target.id || 'unknown' });
     }
-    if (e.target.matches('.social-card')) {
-        trackEvent('social_click', { platform: e.target.className.split(' ').pop() });
+    
+    if (e.target.matches('.social-card') || e.target.closest('[href*="instagram"], [href*="tiktok"]')) {
+        const platform = e.target.href?.includes('instagram') ? 'instagram' : 
+                        e.target.href?.includes('tiktok') ? 'tiktok' : 'social';
+        
+        // Track social media clicks
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'click', {
+                event_category: 'Social',
+                event_label: platform,
+                event_location: 'social_card'
+            });
+        }
+        trackEvent('social_click', { platform: platform });
     }
+    
     if (e.target.closest('.nav-social-link')) {
-        const platform = e.target.closest('.nav-social-link').getAttribute('title')?.toLowerCase();
+        const platform = e.target.closest('.nav-social-link').getAttribute('title')?.toLowerCase() || 'nav_social';
+        
+        // Track navigation social clicks
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'click', {
+                event_category: 'Navigation',
+                event_label: platform,
+                event_location: 'navbar'
+            });
+        }
         trackEvent('nav_social_click', { platform: platform });
     }
 });
@@ -427,8 +501,46 @@ if ('performance' in window) {
     window.addEventListener('load', () => {
         const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
         console.log(`Page load time: ${loadTime}ms`);
+        
+        // Track page load performance
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'page_load_time', {
+                event_category: 'Performance',
+                value: loadTime,
+                custom_parameter: 'load_time_ms'
+            });
+        }
     });
 }
+
+// Track scroll depth
+let maxScrollDepth = 0;
+window.addEventListener('scroll', () => {
+    const scrollDepth = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+    if (scrollDepth > maxScrollDepth && scrollDepth % 25 === 0) { // Track at 25%, 50%, 75%, 100%
+        maxScrollDepth = scrollDepth;
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'scroll', {
+                event_category: 'Engagement',
+                event_label: `${scrollDepth}%`,
+                value: scrollDepth
+            });
+        }
+    }
+});
+
+// Track time on page
+let startTime = new Date().getTime();
+window.addEventListener('beforeunload', () => {
+    const timeOnPage = Math.round((new Date().getTime() - startTime) / 1000);
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'time_on_page', {
+            event_category: 'Engagement',
+            value: timeOnPage,
+            custom_parameter: 'seconds'
+        });
+    }
+});
 
 // Service Worker registration (uncomment if you want offline functionality)
 /*
