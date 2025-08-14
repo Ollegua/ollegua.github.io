@@ -170,8 +170,8 @@ class LinearityWebsite {
             return;
         }
 
-        // Aggiungi reCAPTCHA token ai dati
-        data.recaptcha_token = recaptchaResponse;
+        // Aggiungi reCAPTCHA token per validazione server-side
+        data.g_recaptcha_response = recaptchaResponse;
 
         // Show loading state
         const submitButton = form.querySelector('button[type="submit"]');
@@ -184,6 +184,13 @@ class LinearityWebsite {
             if (typeof emailjs === 'undefined') {
                 throw new Error('EmailJS non è disponibile');
             }
+
+            console.log('Invio email con dati:', {
+                from_name: data.from_name,
+                from_email: data.from_email,
+                message: data.message.substring(0, 50) + '...',
+                current_date: data.current_date
+            });
 
             // Invia email tramite EmailJS
             const response = await emailjs.send(
@@ -211,13 +218,27 @@ class LinearityWebsite {
             }
             
         } catch (error) {
-            console.error('Errore invio email:', error);
+            console.error('Errore dettagliato invio email:', error);
+            console.error('Error status:', error.status);
+            console.error('Error text:', error.text);
             
             // Messaggio di errore più informativo
-            if (error.message.includes('EmailJS')) {
+            if (error.status === 400) {
+                if (error.text && error.text.includes('recaptcha')) {
+                    this.showNotification('❌ Verifica reCAPTCHA fallita. Riprova la verifica.', 'error');
+                    // Reset reCAPTCHA per nuovo tentativo
+                    if (typeof grecaptcha !== 'undefined') {
+                        grecaptcha.reset();
+                    }
+                } else {
+                    this.showNotification('❌ Errore configurazione EmailJS. Verificare Service ID e Template ID.', 'error');
+                }
+            } else if (error.status === 403) {
+                this.showNotification('❌ Accesso negato EmailJS. Verificare Public Key.', 'error');
+            } else if (error.message.includes('EmailJS')) {
                 this.showNotification('⚠️ Servizio email non disponibile. Contattaci direttamente su Telegram.', 'error');
             } else {
-                this.showNotification('❌ Errore nell\'invio del messaggio. Riprova o contattaci su Telegram.', 'error');
+                this.showNotification('❌ Errore nell\'invio del messaggio. Dettagli in console. Contattaci su Telegram.', 'error');
             }
             
         } finally {
