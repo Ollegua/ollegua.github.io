@@ -483,26 +483,43 @@ section {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    /* Fix specifici per Firefox Android */
+    position: relative;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .carousel-track {
     display: flex;
     transition: transform 0.5s ease-in-out;
+    /* Fix per Firefox */
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .carousel-slide {
     flex-shrink: 0;
     padding: 0 10px;
     box-sizing: border-box;
+    /* Fix specifici per Firefox */
+    min-width: 0;
+    -moz-flex-shrink: 0;
 }
 
 /* Desktop: 3 cards visibili */
 @media (min-width: 1025px) {
     .carousel-track {
         width: 200%; /* 6 slides totali per 3 visibili = 200% */
+        /* Fix Firefox */
+        min-width: 200%;
     }
     .carousel-slide {
         width: 16.6667%; /* 100% / 6 slides = 16.6667% */
+        /* Fix Firefox */
+        min-width: 16.6667%;
+        max-width: 16.6667%;
     }
 }
 
@@ -510,9 +527,31 @@ section {
 @media (max-width: 1024px) {
     .carousel-track {
         width: 300%; /* 6 slides totali per 2 visibili = 300% */
+        /* Fix Firefox */
+        min-width: 300%;
     }
     .carousel-slide {
         width: 16.6667%; /* Mantieni la stessa larghezza - il track più largo fa il resto */
+        /* Fix Firefox */
+        min-width: 16.6667%;
+        max-width: 16.6667%;
+    }
+}
+
+/* Fix specifici per Firefox per evitare card duplicate e disposizione errata */
+@-moz-document url-prefix() {
+    .carousel-track {
+        display: -moz-flex;
+        display: flex;
+        -moz-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    }
+    
+    .carousel-slide {
+        -moz-flex: none;
+        flex: none;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
     }
 }
 

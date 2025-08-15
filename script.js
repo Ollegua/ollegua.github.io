@@ -349,6 +349,11 @@ class LinearityWebsite {
             return window.innerWidth < 1025;
         }
         
+        // Funzione per rilevare Firefox
+        function isFirefox() {
+            return navigator.userAgent.indexOf('Firefox') > -1;
+        }
+        
         // Funzione per aggiornare il carousel
         function updateCarousel() {
             // Ricalcola slides visibili in tempo reale
@@ -357,6 +362,13 @@ class LinearityWebsite {
             console.log(`📍 Update: position=${currentPosition}, slidesVisible=${slidesVisible}`);
             console.log(`🖥️ Current window width: ${window.innerWidth}px`);
             
+            // Fix specifico per Firefox - forza il ricalcolo del layout
+            if (isFirefox()) {
+                track.style.display = 'none';
+                track.offsetHeight; // Trigger reflow
+                track.style.display = 'flex';
+            }
+            
             // Calcola la larghezza delle slide in base al dispositivo
             // Desktop: 16.6667% (ogni slide è 1/6 del track 200%)
             // Mobile: 16.6667% (ogni slide è 1/6 del track 300%) - il track più largo gestisce la visualizzazione
@@ -364,6 +376,12 @@ class LinearityWebsite {
             const translateX = -(currentPosition * slideWidth);
             
             track.style.transform = `translateX(${translateX}%)`;
+            
+            // Fix aggiuntivo per Firefox - forza il repaint
+            if (isFirefox()) {
+                track.style.transform = `translateX(${translateX}%) translateZ(0)`;
+            }
+            
             console.log(`🎯 Transform: translateX(${translateX}%) | slideWidth: ${slideWidth}%`);
             
             // Aggiorna indicators
