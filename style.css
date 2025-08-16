@@ -1998,3 +1998,101 @@ textarea:focus {
 .g-recaptcha iframe {
     border-radius: 8px;
 }
+
+/* Backtest Buttons Styles */
+.backtest-buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.backtest-btn-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.backtest-btn {
+    padding: 1.5rem 2rem;
+    text-align: center;
+    line-height: 1.4;
+    font-weight: 500;
+    border-radius: var(--border-radius-lg);
+    text-decoration: none;
+    display: inline-block;
+    transition: var(--transition);
+    min-width: 200px;
+    box-shadow: 0 4px 15px var(--shadow-dark);
+}
+
+.backtest-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--shadow-dark);
+}
+
+.coming-soon-btn {
+    cursor: pointer;
+    border: none;
+    background: var(--medium-gray);
+    color: var(--text-light);
+}
+
+.coming-soon-btn:hover {
+    background: #404040;
+}
+
+/* Tooltip Styles */
+.tooltip {
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--dark-charcoal);
+    color: var(--white);
+    padding: 0.75rem 1rem;
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-sm);
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--dark-charcoal);
+}
+
+.tooltip.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Responsive Backtest Buttons */
+@media (max-width: 768px) {
+    .backtest-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+    
+    .backtest-btn {
+        min-width: 280px;
+        padding: 1.25rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .backtest-btn {
+        min-width: 250px;
+        padding: 1rem 1.25rem;
+        font-size: var(--font-size-sm);
+    }
+}
