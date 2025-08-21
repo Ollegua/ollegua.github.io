@@ -611,3 +611,61 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('❌ Tooltip elements not found');
     }
 });
+
+// ============================================
+// PDF LINKS HANDLER
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🔗 Setting up PDF link handlers...');
+    
+    // Seleziona tutti i link PDF
+    const pdfLinks = document.querySelectorAll('.pdf-link');
+    
+    pdfLinks.forEach((link, index) => {
+        console.log(`📄 Found PDF link ${index + 1}:`, link.href);
+        
+        // Aggiungi event listener per il click
+        link.addEventListener('click', function(e) {
+            // Previeni il comportamento default del link
+            e.preventDefault();
+            
+            const href = this.getAttribute('href');
+            console.log(`🖱️ PDF link clicked: ${href}`);
+            
+            // Verifica se il link è valido
+            if (!href || href === '#') {
+                console.error('❌ Invalid PDF link');
+                alert('Link non valido. Assicurati che il file PDF sia presente nella cartella del sito.');
+                return;
+            }
+            
+            // Prova ad aprire in nuova finestra
+            try {
+                const newWindow = window.open(href, '_blank', 'noopener,noreferrer');
+                if (!newWindow) {
+                    console.warn('⚠️ Popup blocked, trying direct navigation');
+                    // Se il popup è bloccato, prova navigazione diretta in nuova finestra
+                    window.open(href, '_blank');
+                }
+                console.log('✅ PDF opened successfully');
+            } catch (error) {
+                console.error('❌ Error opening PDF:', error);
+                // Fallback: prova download diretto
+                const a = document.createElement('a');
+                a.href = href;
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            }
+        });
+        
+        // Aggiungi hover effect per debug
+        link.addEventListener('mouseenter', function() {
+            console.log(`🖱️ Hovering over PDF: ${this.getAttribute('href')}`);
+        });
+    });
+    
+    console.log(`✅ PDF handlers setup complete for ${pdfLinks.length} links`);
+});

@@ -119,6 +119,23 @@ p {
     cursor: pointer;
     transition: var(--transition);
     text-align: center;
+    pointer-events: auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* PDF Link specific styles */
+.pdf-link {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.pdf-link:hover {
+    text-decoration: none !important;
 }
 
 .btn-primary {
