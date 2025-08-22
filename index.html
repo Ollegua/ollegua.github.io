@@ -1,22 +1,27 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" data-lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Linearity FX - Sistema di Trading Automatizzato | linearityfx.tech</title>
-    <meta name="description" content="Linearity FX: strategia di trading automatizzata con 10 anni di profitti comprovati. Visita il sito per iscriverti e partecipare al progetto LinearityFX">
+    <title data-i18n="page.title">Linearity FX - Sistema di Trading Automatizzato | linearityfx.tech</title>
+    <meta name="description" data-i18n="page.description" content="Linearity FX: strategia di trading automatizzata con 10 anni di profitti comprovati. Visita il sito per iscriverti e partecipare al progetto LinearityFX">
     
     <!-- SEO Meta Tags -->
-    <meta name="keywords" content="linearity fx, trading automatico, forex, algoritmi trading, sistema professionale, telegram trading, linearityfx.tech">
+    <meta name="keywords" data-i18n="page.keywords" content="linearity fx, trading automatico, forex, algoritmi trading, sistema professionale, telegram trading, linearityfx.tech">
     <meta name="author" content="Linearity FX Team">
     <meta name="robots" content="index, follow">
     <meta name="language" content="IT">
     <meta name="revisit-after" content="7 days">
     <link rel="canonical" href="https://linearityfx.tech/">
     
+    <!-- Simple Language System -->
+    <script>
+        console.log('Language system loading...');
+    </script>
+    
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Linearity FX - Sistema di Trading Automatizzato | linearityfx.tech">
-    <meta property="og:description" content="Linearity FX: strategia di trading automatizzata con 10 anni di profitti comprovati. Visita il sito per iscriverti e partecipare al progetto LinearityFX">
+    <meta property="og:title" data-i18n="page.og.title" content="Linearity FX - Sistema di Trading Automatizzato | linearityfx.tech">
+    <meta property="og:description" data-i18n="page.og.description" content="Linearity FX: strategia di trading automatizzata con 10 anni di profitti comprovati. Visita il sito per iscriverti e partecipare al progetto LinearityFX">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://linearityfx.tech/">
     <meta property="og:image" content="https://linearityfx.tech/linearity-logo.png">
@@ -27,13 +32,13 @@
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Linearity FX - Sistema Trading Automatizzato">
-    <meta name="twitter:description" content="10 anni di profitti comprovati nel trading automatizzato. Unisciti oggi!">
+    <meta name="twitter:title" data-i18n="page.twitter.title" content="Linearity FX - Sistema Trading Automatizzato">
+    <meta name="twitter:description" data-i18n="page.twitter.description" content="10 anni di profitti comprovati nel trading automatizzato. Unisciti oggi!">
     <meta name="twitter:image" content="https://linearityfx.tech/linearity-logo.png">
     <meta name="twitter:site" content="@linearity_trading">
     
     <!-- Structured Data Schema.org -->
-    <script type="application/ld+json">
+    <script type="application/ld+json" id="structured-data">
     {
         "@context": "https://schema.org",
         "@type": "FinancialService",
@@ -107,36 +112,50 @@
         <div class="nav-container">
             <div class="nav-logo">
                 <img src="linearity-logo.png" alt="Linearity Trading System - Logo Ufficiale Sistema di Trading Automatizzato" class="logo">
-                <span class="logo-text">LINEARITY</span>
             </div>
             <ul class="nav-menu" id="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">Il Progetto</a></li>
-                <li><a href="#guide" class="nav-link">Guida</a></li>
-                <li><a href="#results" class="nav-link">Risultati</a></li>
-                <li><a href="#contact" class="nav-link">Contatti</a></li>
+                <li><a href="#home" class="nav-link" data-i18n="nav.home">Home</a></li>
+                <li><a href="#about" class="nav-link" data-i18n="nav.about">Il Progetto</a></li>
+                <li><a href="#guide" class="nav-link" data-i18n="nav.guide">Guida</a></li>
+                <li><a href="#results" class="nav-link" data-i18n="nav.results">Risultati</a></li>
+                <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contatti</a></li>
             </ul>
-            <div class="nav-social">
-                <a href="http://t.me/linearityfx_ita" class="nav-social-link" id="nav-telegram" title="Telegram" target="_blank">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0C5.374 0 0 5.373 0 12s5.374 12 12 12 12-5.373 12-12S18.626 0 12 0zm5.568 8.16c-.18 1.896-.962 6.502-1.359 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-                    </svg>
-                </a>
-                <a href="#" class="nav-social-link" id="nav-instagram" title="Instagram">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                    </svg>
-                </a>
-                <a href="#" class="nav-social-link" id="nav-tiktok" title="TikTok">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
-                    </svg>
-                </a>
-            </div>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="nav-actions">
+                <!-- Social Links -->
+                <div class="nav-social">
+                    <a href="http://t.me/linearityfx_ita" class="nav-social-link" id="nav-telegram" title="Telegram" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.374 0 0 5.373 0 12s5.374 12 12 12 12-5.373 12-12S18.626 0 12 0zm5.568 8.16c-.18 1.896-.962 6.502-1.359 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="nav-social-link" id="nav-instagram" title="Instagram">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="nav-social-link" id="nav-tiktok" title="TikTok">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Language Switcher -->
+                <div class="language-switcher">
+                    <button class="lang-btn" data-lang="it" title="Italiano">
+                        <img src="https://flagcdn.com/24x18/it.png" alt="Italiano" width="24" height="18" class="flag-icon">
+                    </button>
+                    <button class="lang-btn" data-lang="en" title="English">
+                        <img src="https://flagcdn.com/24x18/us.png" alt="English" width="24" height="18" class="flag-icon">
+                    </button>
+                </div>
+                
+                <!-- Hamburger Menu - SPOSTATO DENTRO nav-actions -->
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </nav>
@@ -145,8 +164,8 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="hero-text">
-                <h1 class="hero-title">LINEARITY</h1>
-                <p class="hero-description">
+                <h1 class="hero-title" data-i18n="hero.title">LINEARITY</h1>
+                <p class="hero-description" data-i18n="hero.description">
                     Strategia ideata, strutturata e gestita interamente dal Team di LinearityFX!<br><br>
                     
                     Il sistema, attraverso dei complessi e rigorosi calcoli algoritmici, effettua operazioni intraday su XAU/USD cercando di massimizzare il profitto per il cliente non tralasciando l'importantissimo aspetto del Money Management.<br><br>
@@ -156,13 +175,13 @@
                     <strong>Continua a leggere il sito per sapere come aderire al sistema, replicarne le operazioni gratuitamente in totale autonomia senza l'utilizzo di strumenti complicati e sfruttare le sue enormi potenzialità!</strong>
                 </p>
                 <div class="hero-buttons">
-                    <a href="http://t.me/linearityfx_ita" class="btn btn-primary telegram-btn" id="telegram-btn" target="_blank">
+                    <a href="http://t.me/linearityfx_ita" class="btn btn-primary telegram-btn" id="telegram-btn" target="_blank" data-i18n="hero.telegram_btn">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12 0C5.374 0 0 5.373 0 12s5.374 12 12 12 12-5.373 12-12S18.626 0 12 0zm5.568 8.16c-.18 1.896-.962 6.502-1.359 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
                         </svg>
                         Unisciti su Telegram
                     </a>
-                    <a href="#about" class="btn btn-secondary">Scopri di più</a>
+                    <a href="#about" class="btn btn-secondary" data-i18n="hero.learn_more">Scopri di più</a>
                 </div>
             </div>
             <div class="hero-visual">
@@ -177,8 +196,8 @@
     <section id="about" class="about">
         <div class="container">
             <div class="section-header">
-                <h2>Il Progetto Linearity</h2>
-                <p>Un approccio sistematico e professionale al trading che combina tecnologia avanzata, sicurezza e libertà finanziaria per offrire ai nostri clienti un'esperienza di investimento completamente trasparente e automatizzata.</p>
+                <h2 data-i18n="about.title">Il Progetto Linearity</h2>
+                <p data-i18n="about.description">Un approccio sistematico e professionale al trading che combina tecnologia avanzata, sicurezza e libertà finanziaria per offrire ai nostri clienti un'esperienza di investimento completamente trasparente e automatizzata.</p>
             </div>
             
             <div class="about-carousel-container">
@@ -207,8 +226,8 @@
                         <div class="carousel-slide">
                             <div class="about-card">
                                 <div class="card-icon">📈</div>
-                                <h3>Strategie Avanzate</h3>
-                                <p>Utilizziamo analisi tecnica e algoritmi proprietari per identificare le migliori opportunità di trading sui mercati finanziari. Il sistema utilizza un innovativo Take Profit mobile in modo da cavalcare l'onda positiva della posizione aperta e massimizzare il profitto.</p>
+                                <h3 data-i18n="about.card1.title">Strategie Avanzate</h3>
+                                <p data-i18n="about.card1.description">Utilizziamo analisi tecnica e algoritmi proprietari per identificare le migliori opportunità di trading sui mercati finanziari. Il sistema utilizza un innovativo Take Profit mobile in modo da cavalcare l'onda positiva della posizione aperta e massimizzare il profitto.</p>
                             </div>
                         </div>
                         
@@ -216,8 +235,8 @@
                         <div class="carousel-slide">
                             <div class="about-card">
                                 <div class="card-icon">🔍</div>
-                                <h3>Filtro News Intelligente</h3>
-                                <p>Sempre vigile alle news globali, il sistema sospende l'attività nel caso di news globali che possono condizionare negativamente l'attività di trading attivandolo nuovamente al termine degli eventi sensibili.</p>
+                                <h3 data-i18n="about.card2.title">Filtro News Intelligente</h3>
+                                <p data-i18n="about.card2.description">Sempre vigile alle news globali, il sistema sospende l'attività nel caso di news globali che possono condizionare negativamente l'attività di trading attivandolo nuovamente al termine degli eventi sensibili.</p>
                             </div>
                         </div>
                         
@@ -225,8 +244,8 @@
                         <div class="carousel-slide">
                             <div class="about-card">
                                 <div class="card-icon">🤖</div>
-                                <h3>Automatico</h3>
-                                <p>Il tuo conto replicherà esattamente i movimenti del conto principale senza che tu debba fare nulla. Non dovrai seguire mercati, analizzare grafici o preoccuparti di niente: tutto avviene automaticamente.</p>
+                                <h3 data-i18n="about.card3.title">Automatico</h3>
+                                <p data-i18n="about.card3.description">Il tuo conto replicherà esattamente i movimenti del conto principale senza che tu debba fare nulla. Non dovrai seguire mercati, analizzare grafici o preoccuparti di niente: tutto avviene automaticamente.</p>
                             </div>
                         </div>
                         
@@ -234,8 +253,8 @@
                         <div class="carousel-slide">
                             <div class="about-card">
                                 <div class="card-icon">🛡️</div>
-                                <h3>Sicuro</h3>
-                                <p>Collaboriamo esclusivamente con broker certificati e autorizzati dalle principali autorità finanziarie, garantendo la massima sicurezza per i tuoi investimenti. I fondi rimangono sempre nella tua piena disponibilità. Puoi prelevare i tuoi soldi quando vuoi.</p>
+                                <h3 data-i18n="about.card4.title">Sicuro</h3>
+                                <p data-i18n="about.card4.description">Collaboriamo esclusivamente con broker certificati e autorizzati dalle principali autorità finanziarie, garantendo la massima sicurezza per i tuoi investimenti. I fondi rimangono sempre nella tua piena disponibilità. Puoi prelevare i tuoi soldi quando vuoi.</p>
                             </div>
                         </div>
                         
@@ -243,8 +262,8 @@
                         <div class="carousel-slide">
                             <div class="about-card">
                                 <div class="card-icon">🔓</div>
-                                <h3>Gratuito</h3>
-                                <p>Non pagherai mai alcuna quota associativa, il sistema cederà una piccola parte del profitto settimanale al team LinearityFX, se quella settimana non ti faremo guadagnare la tua commissione verrà azzerata.</p>
+                                <h3 data-i18n="about.card5.title">Gratuito</h3>
+                                <p data-i18n="about.card5.description">Non pagherai mai alcuna quota associativa, il sistema cederà una piccola parte del profitto settimanale al team LinearityFX, se quella settimana non ti faremo guadagnare la tua commissione verrà azzerata.</p>
                             </div>
                         </div>
                         
@@ -252,8 +271,8 @@
                         <div class="carousel-slide">
                             <div class="about-card">
                                 <div class="card-icon">📊</div>
-                                <h3>Trasparenza Completa</h3>
-                                <p>Accesso in tempo reale a tutti i movimenti, statistiche dettagliate e performance del sistema. Nessun segreto, tutto sotto i tuoi occhi con 10 anni di track record verificabile.</p>
+                                <h3 data-i18n="about.card6.title">Trasparenza Completa</h3>
+                                <p data-i18n="about.card6.description">Accesso in tempo reale a tutti i movimenti, statistiche dettagliate e performance del sistema. Nessun segreto, tutto sotto i tuoi occhi con 10 anni di track record verificabile.</p>
                             </div>
                         </div>
                     </div>
@@ -299,8 +318,8 @@
     <section id="guide" class="guide">
         <div class="container">
             <div class="section-header">
-                <h2>Guida alla Connessione</h2>
-                <p>Tutto quello che devi sapere per iniziare il tuo percorso con LinearityFX</p>
+                <h2 data-i18n="guide.title">Guida alla Connessione</h2>
+                <p data-i18n="guide.description">Tutto quello che devi sapere per iniziare il tuo percorso con LinearityFX</p>
             </div>
             
             <div class="guide-content">
@@ -310,24 +329,24 @@
                         <div class="step-item">
                             <div class="step-number">1</div>
                             <div class="step-text">
-                                <h4>Leggi l'Introduzione</h4>
-                                <p>Scarica e leggi il PDF introduttivo per comprendere il progetto LinearityFX</p>
+                                <h4 data-i18n="guide.step1.title">Leggi l'Introduzione</h4>
+                                <p data-i18n="guide.step1.description">Scarica e leggi il PDF introduttivo per comprendere il progetto LinearityFX</p>
                             </div>
                         </div>
                         
                         <div class="step-item">
                             <div class="step-number">2</div>
                             <div class="step-text">
-                                <h4>Segui la Guida</h4>
-                                <p>Utilizza la guida passo-passo per configurare correttamente il tuo account</p>
+                                <h4 data-i18n="guide.step2.title">Segui la Guida</h4>
+                                <p data-i18n="guide.step2.description">Utilizza la guida passo-passo per configurare correttamente il tuo account</p>
                             </div>
                         </div>
                         
                         <div class="step-item">
                             <div class="step-number">3</div>
                             <div class="step-text">
-                                <h4>Unisciti su Telegram</h4>
-                                <p>Entra nel gruppo ufficiale per supporto e aggiornamenti in tempo reale</p>
+                                <h4 data-i18n="guide.step3.title">Unisciti su Telegram</h4>
+                                <p data-i18n="guide.step3.description">Entra nel gruppo ufficiale per supporto e aggiornamenti in tempo reale</p>
                             </div>
                         </div>
                     </div>
@@ -341,9 +360,9 @@
                                 <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
                             </svg>
                         </div>
-                        <h3>Presentazione di LinearityFX</h3>
-                        <p>Scopri il mondo di LinearityFX, come funziona il sistema, le strategie utilizzate, i punti di forza e le potenzialità del progetto.</p>
-                        <a href="intro-it.pdf" class="btn btn-primary pdf-link" target="_blank" rel="noopener noreferrer">
+                        <h3 data-i18n="guide.intro.title">Presentazione di LinearityFX</h3>
+                        <p data-i18n="guide.intro.description">Scopri il mondo di LinearityFX, come funziona il sistema, le strategie utilizzate, i punti di forza e le potenzialità del progetto.</p>
+                        <a href="intro-it.pdf" class="btn btn-primary pdf-link" target="_blank" rel="noopener noreferrer" data-i18n="guide.intro.button">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M14,9V5H10V9H7L12,14L17,9H14M5,20V18H19V20H5Z"/>
                             </svg>
@@ -357,9 +376,9 @@
                                 <path d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z"/>
                             </svg>
                         </div>
-                        <h3>Guida alla Connessione</h3>
-                        <p>Istruzioni alla creazione del conto presso il broker, configurazione account, connessione al sistema di LinearityFX.</p>
-                        <a href="guida-it.pdf" class="btn btn-primary pdf-link" target="_blank" rel="noopener noreferrer">
+                        <h3 data-i18n="guide.manual.title">Guida alla Connessione</h3>
+                        <p data-i18n="guide.manual.description">Istruzioni alla creazione del conto presso il broker, configurazione account, connessione al sistema di LinearityFX.</p>
+                        <a href="guida-it.pdf" class="btn btn-primary pdf-link" target="_blank" rel="noopener noreferrer" data-i18n="guide.manual.button">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M14,9V5H10V9H7L12,14L17,9H14M5,20V18H19V20H5Z"/>
                             </svg>
@@ -377,16 +396,16 @@
                             </svg>
                         </div>
                         <div class="support-content">
-                            <h3>Hai Bisogno di Aiuto?</h3>
-                            <p>Se incontri difficoltà durante le fasi di connessione o hai ulteriori domande, il nostro team di supporto è disponibile su Telegram per assisterti.</p>
+                            <h3 data-i18n="guide.support.title">Hai Bisogno di Aiuto?</h3>
+                            <p data-i18n="guide.support.description">Se incontri difficoltà durante le fasi di connessione o hai ulteriori domande, il nostro team di supporto è disponibile su Telegram per assisterti.</p>
                             <div class="support-buttons">
-                                <a href="http://t.me/linearityfx_ita" class="btn btn-primary" target="_blank">
+                                <a href="http://t.me/linearityfx_ita" class="btn btn-primary" target="_blank" data-i18n="guide.support.telegram">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M12 0C5.374 0 0 5.373 0 12s5.374 12 12 12 12-5.373 12-12S18.626 0 12 0zm5.568 8.16c-.18 1.896-.962 6.502-1.359 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
                                     </svg>
                                     Supporto Telegram
                                 </a>
-                                <a href="#contact" class="btn btn-secondary">Contattaci</a>
+                                <a href="#contact" class="btn btn-secondary" data-i18n="guide.support.contact">Contattaci</a>
                             </div>
                         </div>
                     </div>
@@ -399,8 +418,8 @@
     <section id="results" class="results">
         <div class="container">
             <div class="section-header">
-                <h2>I Nostri Risultati</h2>
-                <p>I risultati mostrati sono verificati da MyFXBook e rappresentano performance reali dei nostri conti di trading.</p>
+                <h2 data-i18n="results.title">I Nostri Risultati</h2>
+                <p data-i18n="results.description">I risultati mostrati sono verificati da MyFXBook e rappresentano performance reali dei nostri conti di trading.</p>
             </div>
             
             <div class="results-grid">
@@ -434,18 +453,18 @@
             </div>
             
             <div class="results-footer">
-                <p>Ecco risultati conseguiti dal sistema LinearityFX applicato ai dati storici del mercato.</p>
+                <p data-i18n="results.footer">Ecco risultati conseguiti dal sistema LinearityFX applicato ai dati storici del mercato.</p>
                 
                 <div class="backtest-buttons">
-                    <a href="bt20-25.pdf" class="btn btn-primary backtest-btn" target="_blank">
+                    <a href="bt20-25.pdf" class="btn btn-primary backtest-btn" target="_blank" data-i18n="results.backtest1">
                         Backtest<br>da 1 Gennaio 2020 al 1 Agosto 2025
                     </a>
                     <div class="backtest-btn-wrapper">
-                        <button class="btn btn-secondary backtest-btn coming-soon-btn" id="backtest-2015-btn">
+                        <button class="btn btn-secondary backtest-btn coming-soon-btn" id="backtest-2015-btn" data-i18n="results.backtest2">
                             Backtest<br>da 1 Gennaio 2015 al 1 Agosto 2025
                         </button>
                         <!-- Popup tooltip per il secondo pulsante -->
-                        <div class="tooltip" id="coming-soon-tooltip">
+                        <div class="tooltip" id="coming-soon-tooltip" data-i18n="results.coming_soon">
                             Disponibile a breve
                         </div>
                     </div>
@@ -458,8 +477,8 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
-                <h2>Contattaci</h2>
-                <p>Hai domande? Siamo qui per aiutarti</p>
+                <h2 data-i18n="contact.title">Contattaci</h2>
+                <p data-i18n="contact.description">Hai domande? Siamo qui per aiutarti</p>
             </div>
             
             <div class="contact-content">
@@ -471,9 +490,9 @@
                             </svg>
                         </div>
                         <div class="contact-text">
-                            <h4>Telegram</h4>
-                            <p>Il modo più veloce per contattarci</p>
-                            <a href="http://t.me/linearityfx_ita" class="contact-link" id="contact-telegram" target="_blank">Vai al gruppo</a>
+                            <h4 data-i18n="contact.telegram.title">Telegram</h4>
+                            <p data-i18n="contact.telegram.description">Il modo più veloce per contattarci</p>
+                            <a href="http://t.me/linearityfx_ita" class="contact-link" id="contact-telegram" target="_blank" data-i18n="contact.telegram.link">Vai al gruppo</a>
                         </div>
                     </div>
                     
@@ -484,8 +503,8 @@
                             </svg>
                         </div>
                         <div class="contact-text">
-                            <h4>Instagram</h4>
-                            <p>Seguici per aggiornamenti e contenuti</p>
+                            <h4 data-i18n="contact.instagram.title">Instagram</h4>
+                            <p data-i18n="contact.instagram.description">Seguici per aggiornamenti e contenuti</p>
                             <a href="#" class="contact-link" id="contact-instagram">@linearity</a>
                         </div>
                     </div>
@@ -497,8 +516,8 @@
                             </svg>
                         </div>
                         <div class="contact-text">
-                            <h4>TikTok</h4>
-                            <p>Seguici per contenuti esclusivi</p>
+                            <h4 data-i18n="contact.tiktok.title">TikTok</h4>
+                            <p data-i18n="contact.tiktok.description">Seguici per contenuti esclusivi</p>
                             <a href="#" class="contact-link" id="contact-tiktok">@linearity_trading</a>
                         </div>
                     </div>
@@ -507,25 +526,25 @@
                 <div class="contact-form">
                     <form id="contact-form">
                         <div class="form-group">
-                            <label for="name">Nome</label>
-                            <input type="text" id="name" name="name" required>
+                            <label for="name" data-i18n="contact.form.name">Nome</label>
+                            <input type="text" id="name" name="name" required data-i18n="contact.form.name" placeholder="Nome">
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
+                            <label for="email" data-i18n="contact.form.email">Email</label>
+                            <input type="email" id="email" name="email" required data-i18n="contact.form.email" placeholder="Email">
                         </div>
                         
                         <div class="form-group">
-                            <label for="message">Messaggio</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <label for="message" data-i18n="contact.form.message">Messaggio</label>
+                            <textarea id="message" name="message" rows="5" required data-i18n="contact.form.message" placeholder="Messaggio"></textarea>
                         </div>
                         
                         <div class="form-submit-row">
                             <!-- Google reCAPTCHA Widget -->
                             <div class="g-recaptcha" data-sitekey="6LctC6YrAAAAAKf15wfxnTCNtP7wzMPEAyyJC83t" data-theme="dark" data-size="normal"></div>
                             
-                            <button type="submit" class="btn btn-primary">Invia Messaggio</button>
+                            <button type="submit" class="btn btn-primary" data-i18n="contact.form.submit">Invia Messaggio</button>
                         </div>
                     </form>
                 </div>
@@ -542,11 +561,11 @@
                     <span class="logo-text">LINEARITY</span>
                 </div>
                 <div class="footer-links">
-                    <a href="#home">Home</a>
-                    <a href="#about">Il Progetto</a>
-                    <a href="#guide">Guida</a>
-                    <a href="#results">Risultati</a>
-                    <a href="#contact">Contatti</a>
+                    <a href="#home" data-i18n="nav.home">Home</a>
+                    <a href="#about" data-i18n="nav.about">Il Progetto</a>
+                    <a href="#guide" data-i18n="nav.guide">Guida</a>
+                    <a href="#results" data-i18n="nav.results">Risultati</a>
+                    <a href="#contact" data-i18n="nav.contact">Contatti</a>
                 </div>
                 <div class="footer-social">
                     <a href="http://t.me/linearityfx_ita" class="social-link" id="footer-telegram" target="_blank">
@@ -567,14 +586,15 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Linearity. Tutti i diritti riservati.</p>
+                <p data-i18n="footer.copyright">&copy; 2025 Linearity. Tutti i diritti riservati.</p>
                 <div class="disclaimer">
-                    <p><strong>Avviso di Rischio:</strong> Il trading su Forex comporta un alto livello di rischio e può non essere adatto a tutti gli investitori. Prima di decidere di investire nel mercato dei cambi, dovresti considerare attentamente i tuoi obiettivi di investimento, il livello di esperienza e la propensione al rischio. Esiste la possibilità che tu possa sostenere una perdita di parte o tutto il tuo investimento iniziale e quindi non dovresti investire denaro che non puoi permetterti di perdere. Dovresti essere consapevole di tutti i rischi associati al trading su valute estere e chiedere consigli a un consulente finanziario indipendente in caso di dubbi. Le performance passate non sono indicative di risultati futuri.</p>
+                    <p><strong data-i18n="footer.risk_title">Avviso di Rischio:</strong> <span data-i18n="footer.risk_text">Il trading su Forex comporta un alto livello di rischio e può non essere adatto a tutti gli investitori. Prima di decidere di investire nel mercato dei cambi, dovresti considerare attentamente i tuoi obiettivi di investimento, il livello di esperienza e la propensione al rischio. Esiste la possibilità che tu possa sostenere una perdita di parte o tutto il tuo investimento iniziale e quindi non dovresti investire denaro che non puoi permetterti di perdere. Dovresti essere consapevole di tutti i rischi associati al trading su valute estere e chiedere consigli a un consulente finanziario indipendente in caso di dubbi. Le performance passate non sono indicative di risultati futuri.</span></p>
                 </div>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
+    <script src="simple-i18n.js"></script>
 </body>
 </html>

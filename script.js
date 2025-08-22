@@ -43,6 +43,13 @@ class LinearityWebsite {
             hamburger.addEventListener('click', () => {
                 hamburger.classList.toggle('active');
                 navMenu.classList.toggle('active');
+                
+                // Block/unblock body scroll
+                if (navMenu.classList.contains('active')) {
+                    document.body.classList.add('menu-open');
+                } else {
+                    document.body.classList.remove('menu-open');
+                }
             });
 
             // Close menu when clicking nav links
@@ -50,6 +57,7 @@ class LinearityWebsite {
                 link.addEventListener('click', () => {
                     hamburger.classList.remove('active');
                     navMenu.classList.remove('active');
+                    document.body.classList.remove('menu-open'); // Unlock scroll
                 });
             });
 
@@ -58,6 +66,7 @@ class LinearityWebsite {
                 if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
                     hamburger.classList.remove('active');
                     navMenu.classList.remove('active');
+                    document.body.classList.remove('menu-open'); // Unlock scroll
                 }
             });
         }

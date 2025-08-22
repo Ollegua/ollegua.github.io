@@ -132,6 +132,23 @@ p {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important; /* Spazio tra icona e testo */
+}
+
+/* Icona download nei PDF link */
+.pdf-link svg {
+    width: 18px !important;
+    height: 18px !important;
+    flex-shrink: 0 !important; /* Previene il restringimento dell'icona */
+    opacity: 0.9 !important;
+    transition: all 0.3s ease !important;
+}
+
+.pdf-link:hover svg {
+    opacity: 1 !important;
+    transform: translateY(2px) !important; /* Effetto "bounce" al hover */
 }
 
 .pdf-link:hover {
@@ -144,6 +161,55 @@ p {
     box-shadow: 0 4px 15px var(--shadow);
     font-weight: 600;
     border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Miglioramenti per i bottoni PDF con icone */
+.btn-primary.pdf-link {
+    padding: 12px 20px !important;
+    font-size: 16px !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-primary.pdf-link:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px var(--shadow) !important;
+    background: linear-gradient(135deg, #FFD700, #F4E4BC, #D4AF37) !important;
+}
+
+.btn-primary.pdf-link:active {
+    transform: translateY(0) !important;
+}
+
+/* Stili responsivi per le icone PDF */
+@media (max-width: 768px) {
+    .pdf-link {
+        gap: 6px !important; /* Gap più piccolo su mobile */
+    }
+    
+    .pdf-link svg {
+        width: 16px !important;
+        height: 16px !important;
+    }
+    
+    .btn-primary.pdf-link {
+        padding: 10px 16px !important;
+        font-size: 14px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .pdf-link svg {
+        width: 14px !important;
+        height: 14px !important;
+    }
+    
+    .btn-primary.pdf-link {
+        padding: 8px 12px !important;
+        font-size: 13px !important;
+    }
 }
 
 .btn-primary:hover {
@@ -184,27 +250,25 @@ p {
     justify-content: space-between;
     align-items: center;
     height: 70px;
+    position: relative;
 }
 
 .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important; /* Centra il logo */
+    z-index: 1001 !important;
 }
 
 .logo {
-    height: 40px; /* Ripristinato a 40px */
-    width: auto;
+    height: 55px !important; /* Ingrandito da 40px a 55px */
+    width: auto !important;
+    transition: all 0.3s ease !important;
 }
 
-.logo-text {
-    font-size: var(--font-size-lg);
-    font-weight: 700;
-    background: var(--gold-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: 0.5px;
+.logo:hover {
+    transform: scale(1.05) !important;
+    filter: brightness(1.1) !important;
 }
 
 .nav-menu {
@@ -241,85 +305,342 @@ p {
     width: 100%;
 }
 
-/* Navigation Social Links */
-.nav-social {
+/* Navigation Actions - APPROCCIO RADICALE */
+.nav-actions {
     display: flex;
     align-items: center;
-    gap: var(--spacing-sm);
+    gap: 12px;
+    height: 40px;
 }
 
-.nav-social-link {
+/* Language Switcher - Dimensioni Fisse */
+.language-switcher {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    height: 28px;
+}
+
+.lang-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    text-decoration: none;
-    transition: var(--transition);
-    background: transparent;
-    border: 2px solid transparent;
+    width: 30px !important;
+    height: 22px !important;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    padding: 0 !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.lang-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.7);
+    transform: scale(1.05);
+}
+
+.lang-btn.active {
+    background: rgba(212, 175, 55, 0.6);
+    border-color: var(--primary-gold);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+}
+
+.flag-icon {
+    width: 20px !important;
+    height: 14px !important;
+    object-fit: cover;
+    border-radius: 2px;
+    display: block !important;
+}
+
+/* Social Links - Dimensioni Fisse Bilanciate */
+.nav-social {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 28px;
+}
+
+.nav-social-link {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 50% !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    position: relative !important;
 }
 
 .nav-social-link svg {
-    width: 20px !important;
-    height: 20px !important;
-    max-width: 20px;
-    max-height: 20px;
-    transition: var(--transition);
+    width: 16px !important;
+    height: 16px !important;
+    max-width: 16px !important;
+    max-height: 16px !important;
+    transition: all 0.2s ease !important;
 }
 
 .nav-social-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+    transform: translateY(-1px) !important;
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3) !important;
 }
 
 /* Telegram */
 .nav-social-link[title="Telegram"] {
-    color: #0088cc;
-    border-color: #0088cc;
+    color: #0088cc !important;
+    border-color: #0088cc !important;
 }
 
 .nav-social-link[title="Telegram"]:hover {
-    background: #0088cc;
-    color: white;
+    background: #0088cc !important;
+    color: white !important;
 }
 
 /* Instagram */
 .nav-social-link[title="Instagram"] {
-    color: #E4405F;
-    border-color: #E4405F;
+    color: #E4405F !important;
+    border-color: #E4405F !important;
 }
 
 .nav-social-link[title="Instagram"]:hover {
-    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
-    color: white;
-    border-color: transparent;
+    background: #E4405F !important;
+    color: white !important;
+    border-color: transparent !important;
 }
 
 /* TikTok */
 .nav-social-link[title="TikTok"] {
-    color: #ffffff;
-    border-color: #ffffff;
+    color: #ffffff !important;
+    border-color: #ffffff !important;
 }
 
 .nav-social-link[title="TikTok"]:hover {
-    background: #000000;
-    color: white;
+    background: #ffffff !important;
+    color: #000000 !important;
 }
 
+/* Body scroll lock quando menu è aperto */
+body.menu-open {
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* RESET COMPLETO PER NAV-ACTIONS */
+.nav-actions,
+.nav-actions *,
+.nav-actions *::before,
+.nav-actions *::after {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    outline: 0 !important;
+    font-size: 100% !important;
+    vertical-align: baseline !important;
+    background: transparent !important;
+}
+
+/* Ripristino solo gli stili necessari */
+.nav-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important; /* Gap uniforme per spazio equilibrato */
+    height: 40px !important;
+    background: none !important;
+}
+
+/* Social Links - Primo elemento */
+.nav-social {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    height: 28px !important;
+    background: none !important;
+    margin: 0 !important;
+    order: 1 !important;
+}
+
+/* Language Switcher - Elemento centrale */
+.language-switcher {
+    display: flex !important;
+    gap: 6px !important;
+    align-items: center !important;
+    height: 28px !important;
+    background: none !important;
+    margin: 0 !important; /* Centrato dal gap del parent */
+    order: 2 !important;
+}
+
+/* Hamburger DENTRO nav-actions - Ultimo elemento */
+.nav-actions .hamburger {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 24px !important;
+    height: 24px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    order: 3 !important;
+    position: relative !important;
+    cursor: pointer !important;
+    background: none !important;
+    border: none !important;
+    gap: 4px !important;
+}
+
+/* Ripristino stili specifici con !important */
+.lang-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 30px !important;
+    height: 22px !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 4px !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    cursor: pointer !important;
+}
+
+.nav-social-link {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 50% !important;
+    border: 1px solid transparent !important;
+    background: transparent !important;
+    text-decoration: none !important;
+}
+.nav-actions * {
+    box-sizing: border-box !important;
+}
+
+.nav-social-link,
+.nav-social-link:hover,
+.nav-social-link:focus,
+.nav-social-link:active {
+    min-width: 28px !important;
+    max-width: 28px !important;
+    min-height: 28px !important;
+    max-height: 28px !important;
+}
+
+.nav-social-link svg,
+.nav-social-link:hover svg,
+.nav-social-link:focus svg {
+    min-width: 16px !important;
+    max-width: 16px !important;
+    min-height: 16px !important;
+    max-height: 16px !important;
+}
+
+.lang-btn,
+.lang-btn:hover,
+.lang-btn:focus,
+.lang-btn.active {
+    min-width: 30px !important;
+    max-width: 30px !important;
+    min-height: 22px !important;
+    max-height: 22px !important;
+}
+
+.flag-icon,
+.flag-icon:hover {
+    min-width: 20px !important;
+    max-width: 20px !important;
+    min-height: 14px !important;
+    max-height: 14px !important;
+}
+
+/* Mobile Overrides Aggressivi */
+@media (max-width: 768px) {
+    .nav-actions .nav-social-link,
+    .nav-actions .nav-social-link:hover {
+        min-width: 24px !important;
+        max-width: 24px !important;
+        min-height: 24px !important;
+        max-height: 24px !important;
+    }
+    
+    .nav-actions .nav-social-link svg {
+        min-width: 12px !important;
+        max-width: 12px !important;
+        min-height: 12px !important;
+        max-height: 12px !important;
+    }
+    
+    .lang-btn {
+        min-width: 26px !important;
+        max-width: 26px !important;
+        min-height: 18px !important;
+        max-height: 18px !important;
+    }
+    
+    .flag-icon {
+        min-width: 16px !important;
+        max-width: 16px !important;
+        min-height: 12px !important;
+        max-height: 12px !important;
+    }
+}
+/* HAMBURGER - Solo quello dentro nav-actions è visibile */
 .hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 4px;
+    display: none !important; /* Nasconde tutti gli hamburger di default */
 }
 
-.hamburger span {
-    width: 25px;
-    height: 3px;
-    background: var(--rich-gold);
-    transition: var(--transition);
+/* Solo l'hamburger dentro nav-actions è visibile SU MOBILE */
+.nav-actions .hamburger {
+    display: none !important; /* NASCOSTO SU DESKTOP */
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 30px !important;
+    height: 30px !important;
+    cursor: pointer !important;
+    background: none !important;
+    border: none !important;
+    padding: 4px !important;
+    margin: 0 !important;
+    gap: 4px !important;
+    border-radius: 4px !important;
+    transition: all 0.3s ease !important;
+}
+
+.nav-actions .hamburger:hover {
+    background: rgba(212, 175, 55, 0.1) !important;
+}
+
+.nav-actions .hamburger span {
+    width: 22px !important;
+    height: 2px !important;
+    background: var(--white) !important;
+    border-radius: 1px !important;
+    transition: all 0.3s ease !important;
+    display: block !important;
+    transform-origin: center !important;
+}
+
+/* Hamburger Animation */
+.nav-actions .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px) !important;
+}
+
+.nav-actions .hamburger.active span:nth-child(2) {
+    opacity: 0 !important;
+}
+
+.nav-actions .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px) !important;
 }
 
 /* Hero Section */
@@ -1418,7 +1739,11 @@ section {
 }
 
 @media (max-width: 768px) {
-    /* Navigation mobile ottimizzato */
+    /* Mobile Navigation - Layout Ottimizzato */
+    .nav-container {
+        padding: 0 1rem;
+    }
+    
     .nav-menu {
         position: fixed;
         top: 70px;
@@ -1432,6 +1757,14 @@ section {
         transition: var(--transition);
         box-shadow: 0 5px 20px var(--shadow-dark);
         border-right: 2px solid var(--primary-gold);
+        z-index: 999;
+        overflow-y: auto; /* Aggiunto scroll verticale */
+        overflow-x: hidden; /* Nasconde scroll orizzontale */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling su iOS */
+    }
+    
+    .nav-menu.active {
+        left: 0;
     }
     
     .nav-menu .nav-link {
@@ -1439,16 +1772,91 @@ section {
         font-size: var(--font-size-lg);
         padding: var(--spacing-sm) 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        width: 100%;
+        text-align: center;
     }
     
     .nav-menu .nav-link:hover {
         color: var(--rich-gold);
     }
     
-    .nav-menu.active {
-        left: 0;
+    /* MOBILE HEADER - HAMBURGER DENTRO NAV-ACTIONS */
+    .nav-actions .hamburger {
+        display: flex !important; /* VISIBILE SOLO SU MOBILE */
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 24px !important;
+        height: 24px !important;
+        order: 3 !important; /* Sempre all'estrema destra */
+        margin: 0 !important;
+        padding: 0 !important;
+        cursor: pointer !important;
+        background: none !important;
+        border: none !important;
+        gap: 3px !important;
     }
     
+    /* Hamburger spans */
+    .nav-actions .hamburger span {
+        display: block !important;
+        width: 20px !important;
+        height: 2px !important;
+        background: var(--white) !important;
+        border-radius: 1px !important;
+        transition: var(--transition) !important;
+    }
+    
+    /* Nav Actions Mobile - Nuovo Layout: Social → Bandierine → Hamburger */
+    .nav-actions {
+        gap: 12px !important; /* Gap aumentato per spazio equilibrato */
+        margin-right: 8px !important;
+        order: 2;
+        height: 32px !important;
+    }
+    
+    /* Social Links - Primo elemento mobile */
+    .nav-actions .nav-social {
+        gap: 4px !important;
+        height: 24px !important;
+        order: 1 !important;
+        margin: 0 !important;
+    }
+    
+    /* Language Switcher - Elemento centrale mobile */
+    .language-switcher {
+        gap: 3px !important;
+        height: 24px !important;
+        order: 2 !important;
+        margin: 0 !important; /* Centrato dal gap del parent */
+    }
+    
+    .lang-btn {
+        width: 26px !important;
+        height: 18px !important;
+        border-width: 1px !important;
+        border-radius: 3px !important;
+    }
+    
+    .flag-icon {
+        width: 16px !important;
+        height: 12px !important;
+    }
+    
+    .nav-actions .nav-social-link {
+        width: 24px !important;
+        height: 24px !important;
+        border-width: 1px !important;
+    }
+    
+    .nav-actions .nav-social-link svg {
+        width: 12px !important;
+        height: 12px !important;
+        max-width: 12px !important;
+        max-height: 12px !important;
+    }
+    
+    /* Social Links Mobile nel Menu */
     .nav-social {
         order: -1;
         justify-content: center;
@@ -1461,6 +1869,11 @@ section {
     .nav-social-link {
         width: 44px;
         height: 44px;
+    }
+    
+    .nav-social-link svg {
+        width: 22px !important;
+        height: 22px !important;
     }
     
     /* Hero Section mobile */
@@ -1479,7 +1892,7 @@ section {
         font-size: 3rem;
         line-height: 1.1;
         margin-bottom: var(--spacing-sm);
-        padding-top: var(--spacing-xl); /* Ripristinato per evitare il taglio */
+        padding-top: var(--spacing-xl);
     }
     
     .hero-subtitle {
@@ -1488,9 +1901,9 @@ section {
     }
     
     .hero-description {
-        font-size: var(--font-size-sm); /* Ridotto ulteriormente su tablet */
-        line-height: 1.4; /* Più compatto */
-        margin-bottom: var(--spacing-md); /* Ridotto margine */
+        font-size: var(--font-size-sm);
+        line-height: 1.4;
+        margin-bottom: var(--spacing-md);
         max-width: none;
     }
     
@@ -1508,7 +1921,7 @@ section {
     
     /* Logo hero mobile */
     .logo-hero {
-        height: 267px; /* Aumentato da 200px a 267px */
+        height: 267px;
         width: auto;
         margin: var(--spacing-lg) 0;
     }
@@ -1689,11 +2102,6 @@ section {
         justify-content: flex-start;
     }
     
-    .logo-text {
-        font-size: 1.5rem;
-        line-height: 1;
-    }
-    
     .nav-social-link {
         width: 32px;
         height: 32px;
@@ -1781,6 +2189,101 @@ section {
         --font-size-xs: 0.7rem;
         --font-size-sm: 0.8rem;
         --font-size-base: 0.9rem;
+    }
+    
+    /* Extra Small Mobile Navigation */
+    .nav-container {
+        padding: 0 0.75rem;
+        height: 60px;
+    }
+    
+    .navbar {
+        border-bottom: 1px solid var(--primary-gold);
+    }
+    
+    .logo {
+        height: 45px !important; /* Ingrandito anche su mobile */
+    }
+    
+    /* EXTRA SMALL MOBILE - APPROCCIO ULTRA RADICALE */
+    .nav-container {
+        padding: 0 0.5rem !important;
+        height: 56px !important;
+    }
+    
+    .navbar {
+        border-bottom: 1px solid var(--primary-gold) !important;
+    }
+    
+    .logo {
+        height: 28px !important;
+    }
+    
+    .logo-text {
+        font-size: 0.9rem !important;
+    }
+    
+    .nav-actions {
+        gap: 6px !important;
+        margin-right: 6px !important;
+        height: 28px !important;
+    }
+    
+    .language-switcher {
+        gap: 2px !important;
+        margin-right: 4px !important;
+        height: 20px !important;
+    }
+    
+    .lang-btn {
+        width: 24px !important;
+        height: 16px !important;
+        border-radius: 2px !important;
+    }
+    
+    .flag-icon {
+        width: 14px !important;
+        height: 10px !important;
+    }
+    
+    /* Social Links Ultra Compatte */
+    .nav-actions .nav-social {
+        gap: 2px !important;
+        height: 20px !important;
+    }
+    
+    .nav-actions .nav-social-link {
+        width: 20px !important;
+        height: 20px !important;
+        border-width: 1px !important;
+    }
+    
+    .nav-actions .nav-social-link svg {
+        width: 10px !important;
+        height: 10px !important;
+        max-width: 10px !important;
+        max-height: 10px !important;
+    }
+    
+    .hamburger {
+        padding: 3px !important;
+        gap: 2px !important;
+        width: 20px !important;
+        height: 16px !important;
+    }
+    
+    .hamburger span {
+        width: 16px !important;
+        height: 2px !important;
+    }
+    
+    .nav-menu {
+        top: 56px !important;
+        height: calc(100vh - 56px) !important;
+        padding: 1rem !important;
+        overflow-y: auto !important; /* Scroll interno */
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
     }
     
     .container {
@@ -2488,4 +2991,19 @@ textarea:focus {
         padding: 1rem 1.25rem;
         font-size: var(--font-size-sm);
     }
+}
+
+/* ==========================================
+   LANGUAGE SWITCHER - VERSIONE RADICALE
+   ========================================== */
+
+/* Rimuovo tutte le regole precedenti e ricostruisco */
+
+/* Language transition effect */
+[data-i18n] {
+    transition: opacity 0.2s ease;
+}
+
+.language-switching [data-i18n] {
+    opacity: 0.7;
 }
