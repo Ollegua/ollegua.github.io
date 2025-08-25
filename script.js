@@ -588,40 +588,6 @@ window.addEventListener('beforeunload', () => {
 });
 
 // ============================================
-// BACKTEST BUTTONS TOOLTIP
-// ============================================
-document.addEventListener('DOMContentLoaded', function() {
-    const comingSoonBtn = document.getElementById('backtest-2015-btn');
-    const tooltip = document.getElementById('coming-soon-tooltip');
-    
-    if (comingSoonBtn && tooltip) {
-        console.log('✅ Tooltip elements found');
-        
-        comingSoonBtn.addEventListener('mouseenter', function() {
-            console.log('🖱️ Mouse enter - showing tooltip');
-            tooltip.classList.add('show');
-        });
-        
-        comingSoonBtn.addEventListener('mouseleave', function() {
-            console.log('🖱️ Mouse leave - hiding tooltip');
-            tooltip.classList.remove('show');
-        });
-        
-        comingSoonBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            console.log('👆 Click - showing tooltip');
-            tooltip.classList.add('show');
-            // Nascondi dopo 2 secondi per dispositivi touch
-            setTimeout(() => {
-                tooltip.classList.remove('show');
-            }, 2000);
-        });
-    } else {
-        console.error('❌ Tooltip elements not found');
-    }
-});
-
-// ============================================
 // PDF LINKS HANDLER
 // ============================================
 document.addEventListener('DOMContentLoaded', function() {
