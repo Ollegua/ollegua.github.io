@@ -4,6 +4,15 @@ window.LinearityI18n = {
     
     translations: {
         it: {
+            // Page meta
+            'page.title': 'Linearity FX - Sistema di Trading Automatizzato | linearityfx.tech',
+            'page.description': 'Linearity FX: strategia di trading automatizzata con 10 anni di profitti comprovati. Visita il sito per iscriverti e partecipare al progetto LinearityFX',
+            'page.keywords': 'linearity fx, trading automatico, forex, algoritmi trading, sistema professionale, telegram trading, linearityfx.tech',
+            'page.og.title': 'Linearity FX - Sistema di Trading Automatizzato | linearityfx.tech',
+            'page.og.description': 'Linearity FX: strategia di trading automatizzata con 10 anni di profitti comprovati. Visita il sito per iscriverti e partecipare al progetto LinearityFX',
+            'page.twitter.title': 'Linearity FX - Sistema Trading Automatizzato',
+            'page.twitter.description': '10 anni di profitti comprovati nel trading automatizzato. Unisciti oggi!',
+            
             // Navigation
             'nav.home': 'Home',
             'nav.about': 'Il Progetto', 
@@ -83,6 +92,15 @@ window.LinearityI18n = {
         },
 
         en: {
+            // Page meta
+            'page.title': 'Linearity FX - Automated Trading System | linearityfx.tech',
+            'page.description': 'Linearity FX: automated trading strategy with 10 years of proven profits. Visit the site to sign up and participate in the LinearityFX project',
+            'page.keywords': 'linearity fx, automated trading, forex, trading algorithms, professional system, telegram trading, linearityfx.tech',
+            'page.og.title': 'Linearity FX - Automated Trading System | linearityfx.tech',
+            'page.og.description': 'Linearity FX: automated trading strategy with 10 years of proven profits. Visit the site to sign up and participate in the LinearityFX project',
+            'page.twitter.title': 'Linearity FX - Automated Trading System',
+            'page.twitter.description': '10 years of proven profits in automated trading. Join today!',
+            
             // Navigation
             'nav.home': 'Home',
             'nav.about': 'The Project',
@@ -173,7 +191,13 @@ window.LinearityI18n = {
             const key = element.getAttribute('data-i18n');
             const translation = this.translate(key);
             
-            if (element.tagName === 'INPUT' && element.hasAttribute('placeholder')) {
+            if (element.tagName === 'TITLE') {
+                // Handle title tag specifically
+                element.textContent = translation;
+            } else if (element.tagName === 'META') {
+                // Handle meta tags (update content attribute)
+                element.setAttribute('content', translation);
+            } else if (element.tagName === 'INPUT' && element.hasAttribute('placeholder')) {
                 element.placeholder = translation;
             } else if (element.tagName === 'INPUT' && element.type === 'submit') {
                 element.value = translation;
