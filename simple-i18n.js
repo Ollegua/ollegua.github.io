@@ -1,6 +1,6 @@
 // Simplified I18n system for LinearityFX
 window.LinearityI18n = {
-    currentLang: 'it',
+    currentLang: null, // Don't set default here - let detection decide
     
     translations: {
         it: {
@@ -238,10 +238,18 @@ window.LinearityI18n = {
         this.translatePage();
         this.updateActiveButton();
         this.updateLinksForLanguage(lang);
+        this.updateHtmlLang(lang);
         
         // Save user preference (this will override IP detection for future visits)
         localStorage.setItem('linearity-lang', lang);
         console.log('Language switched to:', lang, '(saved as user preference)');
+    },
+
+    updateHtmlLang(lang) {
+        // Update the HTML lang attribute for SEO and accessibility
+        document.documentElement.setAttribute('lang', lang);
+        document.documentElement.setAttribute('data-lang', lang);
+        console.log('HTML lang attribute updated to:', lang);
     },
 
     updateLinksForLanguage(lang) {
@@ -312,41 +320,89 @@ window.LinearityI18n = {
         }
 
         // If no saved preference, run IP detection
+        // Start with a quick browser language check while API loads
+        this.setInitialLanguage();
         this.detectCountryAndSetLanguage();
+    },
+
+    setInitialLanguage() {
+        // Quick initial check based on browser language
+        const browserLang = navigator.language || navigator.userLanguage;
+        console.log('Browser language detected:', browserLang);
+        
+        if (browserLang && browserLang.startsWith('it')) {
+            this.currentLang = 'it';
+            console.log('Initial language set to Italian based on browser');
+        } else {
+            this.currentLang = 'en';
+            console.log('Initial language set to English based on browser');
+        }
+        
+        // Apply initial translation
+        this.setupUI();
     },
 
     async detectCountryAndSetLanguage() {
         try {
             console.log('Running IP geolocation detection...');
-            const response = await fetch('https://ipapi.co/json/');
-            const data = await response.json();
+            
+            // Try primary service first
+            let data;
+            try {
+                const response = await fetch('https://ipapi.co/json/', {
+                    timeout: 5000
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                data = await response.json();
+            } catch (primaryError) {
+                console.warn('Primary IP service failed, trying fallback:', primaryError);
+                
+                // Try fallback service
+                const fallbackResponse = await fetch('https://ipinfo.io/json', {
+                    timeout: 5000
+                });
+                
+                if (!fallbackResponse.ok) {
+                    throw new Error(`Fallback HTTP error! status: ${fallbackResponse.status}`);
+                }
+                
+                const fallbackData = await fallbackResponse.json();
+                // Convert ipinfo.io format to ipapi.co format
+                data = {
+                    country_code: fallbackData.country
+                };
+            }
             
             console.log('IP Detection Result:', data);
             console.log('Country detected:', data.country_code);
             
-            // If NOT Italian IP, switch to English
-            if (data.country_code && data.country_code.toLowerCase() !== 'it') {
-                console.log('Non-Italian IP detected, switching to English');
-                this.currentLang = 'en';
+            // Determine language based on country
+            let detectedLang = 'en'; // Default to English for non-Italian visitors
+            if (data.country_code && data.country_code.toLowerCase() === 'it') {
+                detectedLang = 'it';
+                console.log('Italian IP detected, setting Italian');
             } else {
-                console.log('Italian IP detected, keeping Italian');
-                this.currentLang = 'it';
+                console.log('Non-Italian IP detected, setting English');
+            }
+            
+            // Only update if different from current
+            if (this.currentLang !== detectedLang) {
+                console.log(`Language changed from ${this.currentLang} to ${detectedLang} based on IP`);
+                this.currentLang = detectedLang;
+                this.setupUI(); // Re-setup with correct language
+            } else {
+                console.log('IP detection confirmed current language setting');
             }
             
         } catch (error) {
-            console.warn('IP detection failed, defaulting to Italian:', error);
-            // Fallback: check browser language
-            const browserLang = navigator.language || navigator.userLanguage;
-            if (browserLang && !browserLang.startsWith('it')) {
-                console.log('Non-Italian browser language detected, switching to English');
-                this.currentLang = 'en';
-            } else {
-                this.currentLang = 'it';
-            }
+            console.warn('All IP detection services failed:', error);
+            // If IP detection fails completely, keep the browser-based detection
+            console.log('Keeping browser-based language detection:', this.currentLang);
         }
-        
-        // Setup UI after language detection
-        this.setupUI();
     },
 
     setupUI() {
@@ -359,10 +415,11 @@ window.LinearityI18n = {
             });
         });
 
-        // Initial translation, UI update, and link update
+        // Initial translation, UI update, link update, and HTML lang update
         this.translatePage();
         this.updateActiveButton();
-        this.updateLinksForLanguage(this.currentLang); // Apply correct links on initialization
+        this.updateLinksForLanguage(this.currentLang);
+        this.updateHtmlLang(this.currentLang);
         console.log('Language system initialized with:', this.currentLang);
     }
 };
@@ -376,4 +433,11 @@ window.switchLanguage = function(lang) {
 document.addEventListener('DOMContentLoaded', () => {
     window.LinearityI18n.init();
     console.log('LinearityI18n initialized');
+    
+    // Add debug info for troubleshooting
+    console.log('Debug info:');
+    console.log('- Navigator language:', navigator.language || navigator.userLanguage);
+    console.log('- Current lang at init:', window.LinearityI18n.currentLang);
+    console.log('- Saved preference:', localStorage.getItem('linearity-lang'));
+    console.log('- User agent:', navigator.userAgent);
 });
