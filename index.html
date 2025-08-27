@@ -99,14 +99,29 @@
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     
     <link rel="stylesheet" href="style.css">
+    <!-- Cookie consent CSS (incolla qui il CSS fornito da CookieYes) -->
+    <link rel="stylesheet" href="cookie-consent.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome per le icone -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Cookiebot (Cookie Consent) - inserito per conformità GDPR -->
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="c2697d95-ea55-488a-94df-1350e0b2cd95" type="text/javascript"></script>
 </head>
 <body>
+    <!-- Cookie banner fallback (mostrato solo se Cookiebot non carica) -->
+    <div id="cookie-fallback" class="cookie-consent-banner" role="dialog" aria-live="polite" style="display:none;">
+        <div class="cookie-message">
+            <strong>Usiamo i cookie</strong>
+            <p>Questo sito utilizza cookie per migliorare l'esperienza utente e per analisi. Premi "Accetto" per consentire tutti i cookie o "Rifiuta" per rifiutare quelli non necessari.</p>
+        </div>
+        <div class="consent-actions">
+            <button id="cookie-accept" class="btn btn-accept">Accetto</button>
+            <button id="cookie-decline" class="btn btn-decline">Rifiuta</button>
+        </div>
+    </div>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -225,58 +240,70 @@
                 <div class="about-carousel">
                     <div class="carousel-track">
                         <!-- Slide 1 -->
-                        <div class="carousel-slide">
-                            <div class="about-card">
-                                <div class="card-icon">📈</div>
-                                <h3 data-i18n="about.card1.title">Strategie Avanzate</h3>
-                                <p data-i18n="about.card1.description">Utilizziamo analisi tecnica e algoritmi proprietari per identificare le migliori opportunità di trading sui mercati finanziari. Il sistema utilizza un innovativo Take Profit mobile in modo da cavalcare l'onda positiva della posizione aperta e massimizzare il profitto.</p>
+                            <div class="carousel-slide">
+                                <div class="about-card">
+                                    <div class="card-icon">
+                                        <img src="Strategie Avanzate.png" alt="Strategie Avanzate" class="card-img" />
+                                    </div>
+                                    <h3 data-i18n="about.card1.title">Strategie Avanzate</h3>
+                                    <p data-i18n="about.card1.description">Utilizziamo analisi tecnica e algoritmi proprietari per identificare le migliori opportunità di trading sui mercati finanziari. Il sistema utilizza un innovativo Take Profit mobile in modo da cavalcare l'onda positiva della posizione aperta e massimizzare il profitto.</p>
+                                </div>
                             </div>
-                        </div>
                         
                         <!-- Slide 2 -->
-                        <div class="carousel-slide">
-                            <div class="about-card">
-                                <div class="card-icon">🔍</div>
-                                <h3 data-i18n="about.card2.title">Filtro News Intelligente</h3>
-                                <p data-i18n="about.card2.description">Sempre vigile alle news globali, il sistema sospende l'attività nel caso di news globali che possono condizionare negativamente l'attività di trading attivandolo nuovamente al termine degli eventi sensibili.</p>
+                            <div class="carousel-slide">
+                                <div class="about-card">
+                                    <div class="card-icon">
+                                        <img src="Filtro News Intelligente.png" alt="Filtro News Intelligente" class="card-img" />
+                                    </div>
+                                    <h3 data-i18n="about.card2.title">Filtro News Intelligente</h3>
+                                    <p data-i18n="about.card2.description">Sempre vigile alle news globali, il sistema sospende l'attività nel caso di news globali che possono condizionare negativamente l'attività di trading attivandolo nuovamente al termine degli eventi sensibili.</p>
+                                </div>
                             </div>
-                        </div>
                         
                         <!-- Slide 3 -->
-                        <div class="carousel-slide">
-                            <div class="about-card">
-                                <div class="card-icon">🤖</div>
-                                <h3 data-i18n="about.card3.title">Automatico</h3>
-                                <p data-i18n="about.card3.description">Il tuo conto replicherà esattamente i movimenti del conto principale senza che tu debba fare nulla. Non dovrai seguire mercati, analizzare grafici o preoccuparti di niente: tutto avviene automaticamente.</p>
+                            <div class="carousel-slide">
+                                <div class="about-card">
+                                    <div class="card-icon">
+                                        <img src="Automatico.png" alt="Automatico" class="card-img" />
+                                    </div>
+                                    <h3 data-i18n="about.card3.title">Automatico</h3>
+                                    <p data-i18n="about.card3.description">Il tuo conto replicherà esattamente i movimenti del conto principale senza che tu debba fare nulla. Non dovrai seguire mercati, analizzare grafici o preoccuparti di niente: tutto avviene automaticamente.</p>
+                                </div>
                             </div>
-                        </div>
                         
                         <!-- Slide 4 -->
-                        <div class="carousel-slide">
-                            <div class="about-card">
-                                <div class="card-icon">🛡️</div>
-                                <h3 data-i18n="about.card4.title">Sicuro</h3>
-                                <p data-i18n="about.card4.description">Collaboriamo esclusivamente con broker certificati e autorizzati dalle principali autorità finanziarie, garantendo la massima sicurezza per i tuoi investimenti. I fondi rimangono sempre nella tua piena disponibilità. Puoi prelevare i tuoi soldi quando vuoi.</p>
+                            <div class="carousel-slide">
+                                <div class="about-card">
+                                    <div class="card-icon">
+                                        <img src="Sicuro.png" alt="Sicuro" class="card-img" />
+                                    </div>
+                                    <h3 data-i18n="about.card4.title">Sicuro</h3>
+                                    <p data-i18n="about.card4.description">Collaboriamo esclusivamente con broker certificati e autorizzati dalle principali autorità finanziarie, garantendo la massima sicurezza per i tuoi investimenti. I fondi rimangono sempre nella tua piena disponibilità. Puoi prelevare i tuoi soldi quando vuoi.</p>
+                                </div>
                             </div>
-                        </div>
                         
                         <!-- Slide 5 -->
-                        <div class="carousel-slide">
-                            <div class="about-card">
-                                <div class="card-icon">🔓</div>
-                                <h3 data-i18n="about.card5.title">Gratuito</h3>
-                                <p data-i18n="about.card5.description">Non pagherai mai alcuna quota associativa, il sistema cederà una piccola parte del profitto settimanale al team LinearityFX, se quella settimana non ti faremo guadagnare la tua commissione verrà azzerata.</p>
+                            <div class="carousel-slide">
+                                <div class="about-card">
+                                    <div class="card-icon">
+                                        <img src="Gratuito.png" alt="Gratuito" class="card-img" />
+                                    </div>
+                                    <h3 data-i18n="about.card5.title">Gratuito</h3>
+                                    <p data-i18n="about.card5.description">Non pagherai mai alcuna quota associativa, il sistema cederà una piccola parte del profitto settimanale al team LinearityFX, se quella settimana non ti faremo guadagnare la tua commissione verrà azzerata.</p>
+                                </div>
                             </div>
-                        </div>
                         
                         <!-- Slide 6 -->
-                        <div class="carousel-slide">
-                            <div class="about-card">
-                                <div class="card-icon">📊</div>
-                                <h3 data-i18n="about.card6.title">Trasparenza Completa</h3>
-                                <p data-i18n="about.card6.description">Accesso in tempo reale a tutti i movimenti, statistiche dettagliate e performance del sistema. Nessun segreto, tutto sotto i tuoi occhi con 10 anni di track record verificabile.</p>
+                            <div class="carousel-slide">
+                                <div class="about-card">
+                                    <div class="card-icon">
+                                        <img src="Trasparenza Completa.png" alt="Trasparenza Completa" class="card-img" />
+                                    </div>
+                                    <h3 data-i18n="about.card6.title">Trasparenza Completa</h3>
+                                    <p data-i18n="about.card6.description">Accesso in tempo reale a tutti i movimenti, statistiche dettagliate e performance del sistema. Nessun segreto, tutto sotto i tuoi occhi con 10 anni di track record verificabile.</p>
+                                </div>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -620,5 +647,36 @@
 
     <script src="script.js"></script>
     <script src="simple-i18n.js"></script>
+    <script>
+        // Fallback banner se Cookiebot non risponde (utile per file:// o testing locale)
+        (function(){
+            function showFallback(){
+                var fb = document.getElementById('cookie-fallback');
+                if(!fb) return;
+                // Mostra solo se non ho già una scelta salvata
+                if(localStorage.getItem('cookieConsentChoice')) return;
+                fb.style.display = 'flex';
+            }
+
+            // Dopo 2 secondi controlla se Cookiebot è definito
+            setTimeout(function(){
+                if(typeof window.Cookiebot === 'undefined'){
+                    showFallback();
+                }
+            }, 2000);
+
+            // Gestione bottoni
+            document.addEventListener('click', function(e){
+                if(e.target && e.target.id === 'cookie-accept'){
+                    localStorage.setItem('cookieConsentChoice','accepted');
+                    var fb = document.getElementById('cookie-fallback'); if(fb) fb.style.display='none';
+                }
+                if(e.target && e.target.id === 'cookie-decline'){
+                    localStorage.setItem('cookieConsentChoice','declined');
+                    var fb = document.getElementById('cookie-fallback'); if(fb) fb.style.display='none';
+                }
+            }, false);
+        })();
+    </script>
 </body>
 </html>
