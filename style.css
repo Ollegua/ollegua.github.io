@@ -1240,6 +1240,37 @@ section {
     border: 2px solid var(--primary-gold);
 }
 
+/* Compact & centered results layout: narrower container and centered single card */
+.results .container {
+    max-width: 720px; /* further reduce the container width for a compact look */
+}
+
+.results-grid {
+    grid-template-columns: 1fr; /* single column for a cleaner centered layout */
+    justify-items: center;
+}
+
+.result-card {
+    width: 100%;
+    max-width: 640px; /* tighter card width for compact presentation */
+    margin: 0 auto;
+}
+
+.result-widget {
+    min-height: 220px; /* reduce widget height to match compact card */
+}
+
+@media (min-width: 1025px) {
+    /* If more than one card is present, allow two-column layout on wide screens */
+    .results-grid {
+        grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+        gap: var(--spacing-xl);
+    }
+    .result-card {
+        max-width: none; /* allow cards to use grid column width */
+    }
+}
+
 .result-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
@@ -1571,54 +1602,143 @@ section {
     color: var(--primary-gold);
 }
 
-/* Contact Form */
-.contact-form {
+/* Contact Restructured Layout */
+.contact-restructured {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-support-section,
+.collaborate-card {
     background: var(--black);
-    padding: var(--spacing-xl);
-    border-radius: var(--border-radius-lg);
-    box-shadow: 0 5px 20px var(--shadow);
-    border: 2px solid var(--primary-gold);
-}
-
-.form-group {
-    margin-bottom: var(--spacing-md);
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: var(--spacing-xs);
-    color: var(--white);
-    font-weight: 500;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: var(--spacing-sm) var(--spacing-md);
-    border: 2px solid var(--primary-gold);
+    padding: var(--spacing-lg);
     border-radius: var(--border-radius);
-    font-family: inherit;
+    border: 2px solid var(--primary-gold);
+    box-shadow: 0 4px 15px var(--shadow-dark);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.contact-support-section h3,
+.collaborate-card h3 {
+    color: var(--white);
+    margin-bottom: var(--spacing-sm);
+    font-size: var(--font-size-xl);
+}
+
+.contact-support-section p,
+.collaborate-card > p {
+    color: var(--light-gray);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-base);
+    flex-grow: 1;
+}
+
+.collaborate-card {
+    background: var(--dark-charcoal);
+}
+
+.support-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    margin-top: auto;
+}
+
+/* Support buttons vertical layout */
+.support-buttons-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    align-items: center;
+    justify-content: center;
+    margin-top: var(--spacing-lg);
+}
+
+.support-buttons-vertical .btn {
+    width: 100%;
+    max-width: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px 24px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-md);
+}
+
+.btn-telegram,
+.btn-support {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: var(--gold-gradient);
+    color: var(--black);
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
     font-size: var(--font-size-base);
     transition: var(--transition);
-    background: var(--dark-charcoal);
-    color: var(--white);
+    border: none;
+    cursor: pointer;
+    flex: 1;
+    justify-content: center;
+    min-width: 0;
 }
 
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-    color: var(--text-light);
+.btn-telegram:hover,
+.btn-support:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--rich-gold);
-    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+.btn-support {
+    background: linear-gradient(135deg, #28a745, #20c997);
 }
 
-.form-group textarea {
-    resize: vertical;
-    min-height: 120px;
+.btn-support:hover {
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+}
+
+.collaborate-benefits {
+    margin-bottom: var(--spacing-lg);
+    flex-grow: 1;
+}
+
+.collaborate-benefits ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.collaborate-benefits li {
+    color: var(--light-gray);
+    margin-bottom: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+    padding-left: var(--spacing-xs);
+}
+
+.btn-collaborate {
+    width: 100%;
+    justify-content: center;
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: var(--font-size-lg);
+    margin-top: auto;
+}
+}
+
+.social-separator {
+    color: var(--text-muted);
+    font-size: var(--font-size-lg);
+    opacity: 0.5;
 }
 
 /* Footer */
@@ -1740,6 +1860,26 @@ section {
     
     .logo-hero {
         height: 267px; /* Aumentato da 200px a 267px */
+    }
+    
+    .contact-restructured {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        max-width: 800px;
+    }
+    
+    .contact-support-section,
+    .collaborate-card {
+        padding: var(--spacing-md);
+    }
+    
+    .social-links-simple {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .social-separator {
+        display: none;
     }
     
     .contact-content {
@@ -2062,6 +2202,38 @@ section {
     }
     
     /* Contact Section mobile */
+    .contact-restructured {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .contact-support-section,
+    .collaborate-card {
+        padding: var(--spacing-sm);
+    }
+    
+    .support-buttons {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .support-buttons-vertical {
+        gap: var(--spacing-sm);
+    }
+    
+    .support-buttons-vertical .btn {
+        max-width: 100%;
+        padding: 14px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .btn-telegram,
+    .btn-support {
+        justify-content: center;
+        width: 100%;
+        padding: var(--spacing-md);
+    }
+    
     .contact-content {
         grid-template-columns: 1fr;
         gap: var(--spacing-xl);
@@ -2925,17 +3097,20 @@ textarea:focus {
     display: inline-block;
 }
 
-.backtest-btn {
-    padding: 1.5rem 2rem;
-    text-align: center;
-    line-height: 1.4;
-    font-weight: 500;
-    border-radius: var(--border-radius-lg);
-    text-decoration: none;
-    display: inline-block;
-    transition: var(--transition);
-    min-width: 200px;
-    box-shadow: 0 4px 15px var(--shadow-dark);
+.backtest-buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: stretch; /* ensure child items match height */
+    margin-top: 2rem;
+}
+.backtest-item {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* allow inner .backtest-settings to fill horizontally */
+    flex: 1 1 380px; /* flexible but with a sensible base width */
+    max-width: 380px;
+    box-sizing: border-box;
 }
 
 .backtest-settings {
@@ -2947,6 +3122,7 @@ textarea:focus {
     box-shadow: 0 2px 10px rgba(212, 175, 55, 0.1);
     display: flex;
     flex-direction: column;
+    height: 100%; /* fill parent so all settings boxes equalize height */
 }
 
 .backtest-settings h4 {

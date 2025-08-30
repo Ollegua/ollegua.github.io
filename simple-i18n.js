@@ -74,7 +74,7 @@ window.LinearityI18n = {
             'results.backtest1.period': 'Periodo: 01/01/2020 - 01/08/2025',
             'results.backtest1.broker': 'Broker: FP-Markets LLC',
             'results.backtest1.leverage': 'Leva: 1:500',
-            'results.backtest1.size': '<strong>Size: 0.01 fisso</strong>',
+            'results.backtest1.size': '<strong>Size: 0.01 - fisso su posizione iniziale</strong>',
             'results.backtest1.profit': '<strong>Utile Netto: 5.523,46€</strong>',
             'results.backtest2.capital': '<strong>Capitale iniziale: 1.000€</strong>',
             'results.backtest2.period': 'Periodo: 01/01/2020 - 01/08/2025',
@@ -89,14 +89,14 @@ window.LinearityI18n = {
             'contact.telegram.title': 'Telegram',
             'contact.telegram.description': 'Il modo più veloce per contattarci',
             'contact.telegram.link': 'Vai al gruppo',
-            'contact.instagram.title': 'Instagram',
-            'contact.instagram.description': 'Seguici per aggiornamenti e contenuti',
-            'contact.tiktok.title': 'TikTok',
-            'contact.tiktok.description': 'Seguici per contenuti esclusivi',
-            'contact.form.name': 'Nome',
-            'contact.form.email': 'Email',
-            'contact.form.message': 'Messaggio',
-            'contact.form.submit': 'Invia Messaggio',
+            'contact.telegram.group': 'https://t.me/linearityfx_ita',
+            'contact.support.title': 'Supporto',
+            'contact.support.description': 'Hai bisogno di aiuto? Siamo pronti ad assisterti per ogni problematica che potresti riscontrare nella registrazione e impostazione della strategia. Contattaci al supporto dedicato su Telegram ed entra a far parte del gruppo per non perdere nessun aggiornamento sul mondo LinearityFX.',
+            'contact.support.link': 'https://t.me/linearity_support',
+            'contact.support.button': 'Supporto Dedicato',
+            'contact.collaborate.title': 'Collabora con noi',
+            'contact.collaborate.description': 'Ti piace il progetto LinearityFX? Aiuta chi vuoi ad iscriversi al progetto e diventa nostro affiliato. Clicca il pulsante qui sotto, compila il modulo di contatto ed organizza la tua rete di affiliazione. Riceverai commissioni competitive derivanti dalla tua rete di iscritti e supporto dedicato.',
+            'contact.collaborate.button': 'Diventa Affiliato',
 
             // Footer
             'footer.copyright': '© 2025 Linearity. Tutti i diritti riservati.',
@@ -175,7 +175,7 @@ window.LinearityI18n = {
             'results.backtest1.period': 'Period: 01/01/2020 - 01/08/2025',
             'results.backtest1.broker': 'Broker: FP-Markets LLC',
             'results.backtest1.leverage': 'Leverage: 1:500',
-            'results.backtest1.size': '<strong>Size: 0.01 fixed</strong>',
+            'results.backtest1.size': '<strong>Size: 0.01 - fixed on initial position</strong>',
             'results.backtest1.profit': '<strong>Net Profit: €5,523.46</strong>',
             'results.backtest2.capital': '<strong>Initial capital: €1,000</strong>',
             'results.backtest2.period': 'Period: 01/01/2020 - 01/08/2025',
@@ -190,14 +190,14 @@ window.LinearityI18n = {
             'contact.telegram.title': 'Telegram',
             'contact.telegram.description': 'The fastest way to contact us',
             'contact.telegram.link': 'Go to group',
-            'contact.instagram.title': 'Instagram',
-            'contact.instagram.description': 'Follow us for updates and content',
-            'contact.tiktok.title': 'TikTok',
-            'contact.tiktok.description': 'Follow us for exclusive content',
-            'contact.form.name': 'Name',
-            'contact.form.email': 'Email',
-            'contact.form.message': 'Message',
-            'contact.form.submit': 'Send Message',
+            'contact.telegram.group': 'https://t.me/linearityfx_en',
+            'contact.support.title': 'Support',
+            'contact.support.description': 'Do you need help? We are ready to assist you with any issue you may encounter during registration and strategy setup. Contact us at our dedicated support on Telegram and join the group to not miss any updates on the LinearityFX world.',
+            'contact.support.link': 'https://t.me/linearity_support',
+            'contact.support.button': 'Dedicated Support',
+            'contact.collaborate.title': 'Collaborate with us',
+            'contact.collaborate.description': 'Do you like the LinearityFX project? Help whoever you want to sign up for the project and become our affiliate. Click the button below, fill out the contact form and organize your affiliate network. You will receive competitive commissions from your network of subscribers and dedicated support.',
+            'contact.collaborate.button': 'Become Affiliate',
 
             // Footer
             'footer.copyright': '© 2025 Linearity. All rights reserved.',
@@ -273,6 +273,15 @@ window.LinearityI18n = {
             telegramLinks.forEach(link => {
                 link.href = 'http://t.me/linearityfx_en';
             });
+
+            // Update data-i18n-href elements for contact section
+            const i18nHrefElements = document.querySelectorAll('[data-i18n-href]');
+            i18nHrefElements.forEach(element => {
+                const key = element.getAttribute('data-i18n-href');
+                if (this.translations.en && this.translations.en[key]) {
+                    element.href = this.translations.en[key];
+                }
+            });
             
         } else {
             // Italian version - restore original links
@@ -293,6 +302,15 @@ window.LinearityI18n = {
             const telegramLinks = document.querySelectorAll('a[href="http://t.me/linearityfx_en"]');
             telegramLinks.forEach(link => {
                 link.href = 'http://t.me/linearityfx_ita';
+            });
+
+            // Update data-i18n-href elements for contact section
+            const i18nHrefElements = document.querySelectorAll('[data-i18n-href]');
+            i18nHrefElements.forEach(element => {
+                const key = element.getAttribute('data-i18n-href');
+                if (this.translations.it && this.translations.it[key]) {
+                    element.href = this.translations.it[key];
+                }
             });
         }
     },
