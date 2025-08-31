@@ -111,6 +111,205 @@
     <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="c2697d95-ea55-488a-94df-1350e0b2cd95" type="text/javascript"></script>
 </head>
 <body>
+        <!-- Overlay Consenso Obbligatorio LinearityFX -->
+        <div id="consent-overlay" tabindex="-1" aria-modal="true" role="dialog" style="display:none;">
+            <div class="consent-overlay-bg"></div>
+            <div class="consent-overlay-box" role="document">
+                        <h2 class="consent-overlay-title">Avvertenze sui rischi</h2>
+                        <div class="consent-overlay-text" tabindex="0">
+                            <p style="text-align:center; font-weight:700; margin-bottom:1.2rem; font-size:0.8625em;">
+                                Avvertenze sui rischi e condizioni d’uso – LinearityFX
+                            </p>
+                            <p style="text-align:justify; font-size:0.8625em;">
+                                Questo sito ha finalità esclusivamente informative ed educative. Le informazioni qui contenute non costituiscono consulenza finanziaria personalizzata, sollecitazione al pubblico risparmio o offerta di strumenti/servizi di investimento ai sensi del D.Lgs. 58/1998 (TUF) e della Direttiva MiFID II.<br>
+                                LinearityFX non è un intermediario autorizzato né un consulente finanziario abilitato; non gestisce capitali di terzi e non riceve pagamenti diretti dagli utenti.<br><br>
+                                L’eventuale accesso al copy trading avviene solo tramite broker regolamentati, che gestiscono in autonomia le condizioni economiche e la documentazione legale. LinearityFX non ha alcun controllo sui fondi degli utenti né fornisce garanzie di risultato.<br><br>
+                                Il trading su CFD, Forex e metalli (es. XAU/USD) è ad alto rischio e può comportare perdite parziali o totali del capitale investito. Il copy trading replica automaticamente operazioni di terzi e comporta gli stessi rischi: resta tua responsabilità valutarne l’adeguatezza, monitorarne l’andamento e interrompere la replica in qualsiasi momento.<br>
+                                I risultati passati, i backtest e le simulazioni non garantiscono né sono indicativi di risultati futuri.<br><br>
+                                Cliccando “Accetta e continua” dichiari di avere almeno 18 anni, di aver letto e compreso le presenti avvertenze e di accettare che ogni decisione operativa è a tuo esclusivo rischio.
+                            </p>
+                        </div>
+                <div class="consent-overlay-actions">
+                    <button id="consent-accept" class="consent-btn consent-btn-primary" autofocus>✅ Accetta e continua</button>
+                    <a href="https://www.google.com/" class="consent-btn consent-btn-secondary">❌ Esci dal sito</a>
+                </div>
+            </div>
+        </div>
+        <style>
+            /* Overlay a schermo intero */
+            #consent-overlay {
+                position: fixed;
+                top: 0; left: 0; right: 0; bottom: 0;
+                width: 100vw; height: 100vh;
+                z-index: 99999;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: 'Inter', sans-serif;
+            }
+            .consent-overlay-bg {
+                position: absolute;
+                top: 0; left: 0; right: 0; bottom: 0;
+                width: 100vw; height: 100vh;
+                background: rgba(0,0,0,0.8);
+                backdrop-filter: blur(8px);
+                z-index: 1;
+            }
+            .consent-overlay-box {
+                position: relative;
+                z-index: 2;
+                background: linear-gradient(135deg, #FFF8E7 0%, #F4E4BC 100%);
+                border: 2px solid #D4AF37;
+                border-radius: 16px;
+                box-shadow: 0 8px 32px rgba(212,175,55,0.25);
+                max-width: 600px;
+                width: 90vw;
+                padding: 2rem 1.5rem 1.5rem 1.5rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .consent-overlay-title {
+                font-size: 1.725rem;
+                font-weight: 700;
+                color: #B8860B;
+                margin-bottom: 1rem;
+                text-align: center;
+                background: linear-gradient(135deg, #FFD700, #D4AF37, #B8860B);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+            .consent-overlay-text {
+                font-size: 0.8625rem;
+                color: #222;
+                max-height: 40vh;
+                overflow-y: auto;
+                margin-bottom: 1.5rem;
+                width: 100%;
+                line-height: 1.6;
+                padding-right: 0.5rem;
+            }
+            .consent-overlay-actions {
+                display: flex;
+                gap: 1rem;
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .consent-btn {
+                font-size: 1rem;
+                padding: 0.75rem 1.5rem;
+                border-radius: 8px;
+                border: none;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                outline: none;
+                box-shadow: 0 2px 8px rgba(212,175,55,0.10);
+                margin-bottom: 0.5rem;
+                text-decoration: none;
+                display: inline-block;
+            }
+            .consent-btn-primary {
+                background: linear-gradient(135deg, #FFD700, #D4AF37, #B8860B);
+                color: #000;
+                border: 2px solid #FFD700;
+            }
+            .consent-btn-primary:hover, .consent-btn-primary:focus {
+                background: linear-gradient(135deg, #FFD700, #F4E4BC, #D4AF37);
+                color: #222;
+                box-shadow: 0 4px 16px rgba(212,175,55,0.25);
+                border-color: #B8860B;
+            }
+            .consent-btn-secondary {
+                background: transparent;
+                color: #B8860B;
+                border: 2px solid #B8860B;
+            }
+            .consent-btn-secondary:hover, .consent-btn-secondary:focus {
+                background: #FFF8E7;
+                color: #D4AF37;
+                border-color: #FFD700;
+            }
+            @media (max-width: 600px) {
+                .consent-overlay-box {
+                    max-width: 95vw;
+                    padding: 1.2rem 0.5rem 1rem 0.5rem;
+                }
+                .consent-overlay-title {
+                    font-size: 1.127rem;
+                }
+                .consent-overlay-text {
+                    font-size: 0.805rem;
+                    max-height: 50vh;
+                }
+                .consent-btn {
+                    font-size: 0.95rem;
+                    padding: 0.7rem 1.1rem;
+                }
+                /* Centra il bottone Diventa Affiliato solo su mobile */
+                .btn-collaborate {
+                    display: block;
+                    margin: 0 auto;
+                    text-align: center;
+                }
+            }
+        </style>
+        <script>
+            // Overlay Consenso Obbligatorio - LinearityFX
+            // Mostra overlay se non c'è consenso in localStorage
+            (function() {
+                var consentKey = 'linearityfx_consent';
+                var overlay = document.getElementById('consent-overlay');
+                var acceptBtn = null;
+                // Funzione per mostrare overlay
+                function showOverlay() {
+                    overlay.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                    // Focus automatico sul pulsante "Accetto"
+                    setTimeout(function() {
+                        acceptBtn = document.getElementById('consent-accept');
+                        if (acceptBtn) acceptBtn.focus();
+                    }, 100);
+                }
+                // Funzione per nascondere overlay
+                function hideOverlay() {
+                    overlay.style.display = 'none';
+                    document.body.style.overflow = '';
+                }
+                // Controlla consenso
+                if (!localStorage.getItem(consentKey)) {
+                    showOverlay();
+                }
+                // Gestione pulsante "Accetto"
+                document.addEventListener('click', function(e) {
+                    if (e.target && e.target.id === 'consent-accept') {
+                        localStorage.setItem(consentKey, 'accepted');
+                        hideOverlay();
+                    }
+                });
+                // Gestione tastiera: Enter su "Accetto"
+                document.addEventListener('keydown', function(e) {
+                    if (overlay.style.display === 'flex' && (e.key === 'Enter' || e.keyCode === 13)) {
+                        acceptBtn = document.getElementById('consent-accept');
+                        if (acceptBtn && document.activeElement === acceptBtn) {
+                            localStorage.setItem(consentKey, 'accepted');
+                            hideOverlay();
+                        }
+                    }
+                });
+                // Impedisce interazione con il resto del sito finché overlay è attivo
+                if (overlay) {
+                    overlay.addEventListener('click', function(e) {
+                        if (e.target === overlay) {
+                            // Non chiudere overlay se si clicca fuori dal box
+                            e.stopPropagation();
+                        }
+                    });
+                }
+            })();
+        </script>
     <!-- Cookie banner fallback (mostrato solo se Cookiebot non carica) -->
     <div id="cookie-fallback" class="cookie-consent-banner" role="dialog" aria-live="polite" style="display:none;">
         <div class="cookie-message">
@@ -147,7 +346,7 @@
                     </a>
                     <a href="https://www.instagram.com/linearityfx" class="nav-social-link" id="nav-instagram" title="Instagram" target="_blank" rel="noopener noreferrer">
                         <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.645.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                         </svg>
                     </a>
                     <a href="#" class="nav-social-link" id="nav-tiktok" title="TikTok">
@@ -183,13 +382,13 @@
             <div class="hero-text">
                 <h1 class="hero-title" data-i18n="hero.title">LINEARITY</h1>
                 <p class="hero-description" data-i18n="hero.description">
-                    Strategia ideata, strutturata e gestita interamente dal Team di LinearityFX!<br><br>
+                    Strategia ideata, strutturata e gestita interamente dal Team di LinearityFX.<br><br>
                     
-                    Il sistema, attraverso dei complessi e rigorosi calcoli algoritmici, effettua operazioni intraday su XAU/USD cercando di massimizzare il profitto per il cliente non tralasciando l'importantissimo aspetto del Money Management.<br><br>
+                    Il sistema, attraverso dei complessi e rigorosi calcoli algoritmici, effettua operazioni intraday su XAU/USD con forte attenzione alla gestione del rischio.<br><br>
                     
-                    Correlato da un potente e sempre aggiornato sistema di controllo delle news, opera sempre a riparo da possibili condizionamenti estremi ed improvvisi del mercato.<br><br>
+                    Correlato da un potente e sempre aggiornato sistema di controllo delle news, il sistema tenta di ridurre l’esposizione in prossimità di eventi macro.<br><br>
                     
-                    <strong>Continua a leggere il sito per sapere come aderire al sistema, replicarne le operazioni gratuitamente in totale autonomia senza l'utilizzo di strumenti complicati e sfruttare le sue enormi potenzialità!</strong>
+                    <strong>Continua a leggere il sito per sapere come aderire al sistema, replicarne le operazioni gratuitamente in totale autonomia senza l'utilizzo di strumenti complicati.</strong>
                 </p>
                 <div class="hero-buttons">
                     <a href="http://t.me/linearityfx_ita" class="btn btn-primary telegram-btn" id="telegram-btn" target="_blank" data-i18n="hero.telegram_btn">
@@ -422,7 +621,6 @@
                         <div class="support-icon">
                             <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 0C5.374 0 0 5.373 0 12s5.374 12 12 12 12-5.373 12-12S18.626 0 12 0zm5.568 8.16c-.18 1.896-.962 6.502-1.359 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-                            </svg>
                         </div>
                         <div class="support-content">
                             <h3 data-i18n="guide.support.title">Hai Bisogno di Aiuto?</h3>
@@ -484,7 +682,7 @@
                                 <li data-i18n="results.backtest1.size">Size: 0.01 - fisso su posizione iniziale</li>
                                 <li data-i18n="results.backtest1.profit">Utile Netto: 5.523,46€</li>
                             </ul>
-                            <a href="bt20-25.pdf" class="btn btn-primary backtest-btn" target="_blank" data-i18n="results.backtest_button">
+                            <a href="bt20-25.pdf" class="btn btn-telegram" target="_blank" data-i18n="results.backtest_button">
                                 Backtest
                             </a>
                         </div>
@@ -501,7 +699,7 @@
                                 <li data-i18n="results.backtest2.profit">Utile Netto: 49.655,85€</li>
                             </ul>
                             <div class="backtest-btn-wrapper">
-                                <a href="bt20-25prog.pdf" class="btn btn-primary backtest-btn" target="_blank" data-i18n="results.backtest_button">
+                                <a href="bt20-25prog.pdf" class="btn btn-telegram" target="_blank" data-i18n="results.backtest_button">
                                     Backtest
                                 </a>
                             </div>
@@ -533,22 +731,17 @@
                             </svg>
                             <span data-i18n="contact.support.button">Supporto Dedicato</span>
                         </a>
-                        <!-- Gruppo community (secondo) -->
-                        <a class="btn btn-telegram" href="javascript:void(0)" target="_blank" rel="noopener" data-i18n-href="contact.telegram.group">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0C5.374 0 0 5.373 0 12s5.374 12 12 12 12-5.373 12-12S18.626 0 12 0zm5.568 8.16c-.18 1.896-.962 6.502-1.359 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-                            </svg>
-                            <span data-i18n="contact.telegram.link">Gruppo Community</span>
-                        </a>
                     </div>
                 </div>
 
                 <div class="collaborate-card">
                     <h3 data-i18n="contact.collaborate.title">Collabora con noi</h3>
                     <p data-i18n="contact.collaborate.description">Ti piace il progetto LinearityFX? Aiuta chi vuoi ad iscriversi al progetto e diventa nostro affiliato. Clicca il pulsante qui sotto, compila il modulo di contatto ed organizza la tua rete di affiliazione. Riceverai commissioni competitive derivanti dalla tua rete di iscritti e supporto dedicato.</p>
-                    <a class="btn btn-primary btn-collaborate" href="https://forms.gle/1Eoem8LxKyftYJj97" target="_blank" rel="noopener">
+                    <!-- Pulsante Collaborazione stile Telegram, con icona -->
+                    <a class="btn btn-telegram" href="https://forms.gle/1Eoem8LxKyftYJj97" target="_blank" rel="noopener">
                         <span data-i18n="contact.collaborate.button">Diventa Affiliato</span>
                     </a>
+                    <!-- Fine nuovo pulsante -->
                 </div>
             </div>
         </div>
@@ -577,7 +770,7 @@
                     </a>
                     <a href="https://www.instagram.com/linearityfx" class="social-link" id="footer-instagram" target="_blank" rel="noopener noreferrer">
                         <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.645.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                         </svg>
                     </a>
                     <a href="#" class="social-link" id="footer-tiktok">

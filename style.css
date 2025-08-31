@@ -1628,6 +1628,7 @@ section {
     color: var(--white);
     margin-bottom: var(--spacing-sm);
     font-size: var(--font-size-xl);
+    text-align: center;
 }
 
 .contact-support-section p,
@@ -1673,6 +1674,7 @@ section {
     transition: all 0.3s ease;
     box-shadow: var(--shadow-md);
 }
+
 
 .btn-telegram,
 .btn-support {
@@ -1732,7 +1734,25 @@ section {
     padding: var(--spacing-md) var(--spacing-lg);
     font-size: var(--font-size-lg);
     margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    background: var(--gold-gradient);
+    color: var(--black);
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    flex: 1;
+    min-width: 0;
+    box-shadow: var(--shadow-md);
 }
+
+.btn-collaborate:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
 }
 
 .social-separator {
@@ -3254,10 +3274,23 @@ textarea:focus {
         font-size: 1rem;
         margin-top: 1.5rem;
         border-radius: 8px;
-        display: block;
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
+        }
+
+        /* Centra il pulsante Backtest solo su mobile */
+        .backtest-settings .btn-telegram {
+            display: block !important;
+            margin: 1.2rem auto 0 auto !important;
+            text-align: center !important;
+            max-width: 280px;
+        }
+        }
+
+        /* Centra il pulsante Diventa Affiliato solo su mobile */
+        .collaborate-card .btn-telegram {
+            display: block !important;
+            margin: 0 auto !important;
+            text-align: center !important;
+        }
     }
     
     .backtest-settings .backtest-btn-wrapper {

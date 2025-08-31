@@ -22,19 +22,19 @@ window.LinearityI18n = {
 
             // Hero section
             'hero.title': 'LINEARITY',
-            'hero.description': 'Strategia ideata, strutturata e gestita interamente dal Team di LinearityFX!<br><br>Il sistema, attraverso dei complessi e rigorosi calcoli algoritmici, effettua operazioni intraday su XAU/USD cercando di massimizzare il profitto per il cliente non tralasciando l\'importantissimo aspetto del Money Management.<br><br>Correlato da un potente e sempre aggiornato sistema di controllo delle news, opera sempre a riparo da possibili condizionamenti estremi ed improvvisi del mercato.<br><br><strong>Continua a leggere il sito per sapere come aderire al sistema, replicarne le operazioni gratuitamente in totale autonomia senza l\'utilizzo di strumenti complicati e sfruttare le sue enormi potenzialità!</strong>',
+            'hero.description': 'Strategia ideata, strutturata e gestita interamente dal Team di LinearityFX.<br><br> Il sistema, attraverso dei complessi e rigorosi calcoli algoritmici, effettua operazioni intraday su XAU/USD con forte attenzione alla gestione del rischio.<br><br>Correlato da un potente e sempre aggiornato sistema di controllo delle news, il sistema tenta di ridurre l’esposizione in prossimità di eventi macro.<br><br><strong>Continua a leggere il sito per sapere come aderire al sistema, replicarne le operazioni gratuitamente in totale autonomia senza l\'utilizzo di strumenti complicati</strong>',
             'hero.telegram_btn': 'Unisciti su Telegram',
             'hero.learn_more': 'Scopri di più',
 
             // About section
             'about.title': 'Il Progetto Linearity',
-            'about.description': 'Un approccio sistematico e professionale al trading che combina tecnologia avanzata, sicurezza e libertà finanziaria per offrire ai nostri clienti un\'esperienza di investimento completamente trasparente e automatizzata.',
+            'about.description': 'Adottiamo un approccio strutturato e professionale al trading e al copy trading, basato sull’utilizzo di broker regolamentati e conformi agli standard internazionali. Il nostro obiettivo è puntare a ottenere un’esperienza di copy trading sicura, totalmente trasparente e interamente automatizzata, in cui ogni operazione viene eseguita e replicata in tempo reale senza margini di discrezionalità, così da offrire la massima affidabilità, chiarezza e controllo.',
             'about.card1.title': 'Strategie Avanzate',
-            'about.card1.description': 'Utilizziamo analisi tecnica e algoritmi proprietari per identificare le migliori opportunità di trading sui mercati finanziari. Il sistema utilizza un innovativo Take Profit mobile in modo da cavalcare l\'onda positiva della posizione aperta e massimizzare il profitto.',
+            'about.card1.description': 'Utilizziamo analisi tecnica e algoritmi proprietari per identificare le migliori opportunità di trading sui mercati finanziari. Il sistema utilizza un Take Profit mobile in modo da cavalcare l\'onda positiva della posizione aperta.',
             'about.card2.title': 'Filtro News Intelligente',
             'about.card2.description': 'Sempre vigile alle news globali, il sistema sospende l\'attività nel caso di news globali che possono condizionare negativamente l\'attività di trading attivandolo nuovamente al termine degli eventi sensibili.',
             'about.card3.title': 'Automatico',
-            'about.card3.description': 'Il tuo conto replicherà esattamente i movimenti del conto principale senza che tu debba fare nulla. Non dovrai seguire mercati, analizzare grafici o preoccuparti di niente: tutto avviene automaticamente.',
+            'about.card3.description': 'Il tuo conto replicherà esattamente i movimenti del conto principale senza che tu debba fare nulla. Tutto avviene automaticamente, ma l\'operatività automatizzata potrà essere monitorata da parte dell\'utente, il quale potrà scegliere di intervenire individualmente se lo riterrà opportuno.',
             'about.card4.title': 'Sicuro',
             'about.card4.description': 'Collaboriamo esclusivamente con broker certificati e autorizzati dalle principali autorità finanziarie, garantendo la massima sicurezza per i tuoi investimenti. I fondi rimangono sempre nella tua piena disponibilità. Puoi prelevare i tuoi soldi quando vuoi.',
             'about.card5.title': 'Gratuito',
@@ -52,20 +52,20 @@ window.LinearityI18n = {
             'guide.step3.title': 'Unisciti su Telegram',
             'guide.step3.description': 'Entra nel gruppo ufficiale per supporto e aggiornamenti in tempo reale',
             'guide.intro.title': 'Presentazione di LinearityFX',
-            'guide.intro.description': 'Scopri il mondo di LinearityFX, come funziona il sistema, le strategie utilizzate, i punti di forza e le potenzialità del progetto.',
+            'guide.intro.description': 'Scopri come funziona il sistema, la strategia utilizzata, i punti di forza e le potenzialità del progetto.',
             'guide.intro.button': 'Introduzione',
             'guide.manual.title': 'Guida alla Connessione',
             'guide.manual.description': 'Istruzioni alla creazione del conto presso il broker, configurazione account, connessione al sistema di LinearityFX.',
             'guide.manual.button': 'Guida',
             'guide.support.title': 'Hai Bisogno di Aiuto?',
             'guide.support.description': 'Se incontri difficoltà durante le fasi di connessione o hai ulteriori domande, il nostro team di supporto è disponibile su Telegram per assisterti.',
-            'guide.support.telegram': 'Supporto Telegram',
+            'guide.support.telegram': 'Canale Telegram',
             'guide.support.contact': 'Contattaci',
 
             // Results section
             'results.title': 'I Nostri Risultati',
             'results.description': 'I risultati mostrati sono verificati da MyFXBook e rappresentano performance reali dei nostri conti di trading.',
-            'results.footer': 'Ecco risultati conseguiti dal sistema LinearityFX applicato ai dati storici del mercato.',
+            'results.footer': 'Ecco risultati conseguiti dal sistema LinearityFX applicato ai dati storici del mercato.  N.B. I risultati passati non sono hanno valore predittivo.',
             'results.backtest1': 'Backtest<br>da 1 Gennaio 2020 al 1 Agosto 2025',
             'results.backtest2': 'Backtest<br>da 1 Gennaio 2015 al 1 Agosto 2025',
             'results.backtest_button': 'Backtest',
@@ -88,7 +88,7 @@ window.LinearityI18n = {
             'contact.description': 'Hai domande? Siamo qui per aiutarti',
             'contact.telegram.title': 'Telegram',
             'contact.telegram.description': 'Il modo più veloce per contattarci',
-            'contact.telegram.link': 'Vai al gruppo',
+            'contact.telegram.link': 'Vai al canale',
             'contact.telegram.group': 'https://t.me/linearityfx_ita',
             'contact.support.title': 'Supporto',
             'contact.support.description': 'Hai bisogno di aiuto? Siamo pronti ad assisterti per ogni problematica che potresti riscontrare nella registrazione e impostazione della strategia. Contattaci al supporto dedicato su Telegram ed entra a far parte del gruppo per non perdere nessun aggiornamento sul mondo LinearityFX.',
@@ -100,8 +100,8 @@ window.LinearityI18n = {
 
             // Footer
             'footer.copyright': '© 2025 Linearity. Tutti i diritti riservati.',
-            'footer.risk_title': 'Avviso di Rischio:',
-            'footer.risk_text': 'Il trading su Forex comporta un alto livello di rischio e può non essere adatto a tutti gli investitori. Prima di decidere di investire nel mercato dei cambi, dovresti considerare attentamente i tuoi obiettivi di investimento, il livello di esperienza e la propensione al rischio. Esiste la possibilità che tu possa sostenere una perdita di parte o tutto il tuo investimento iniziale e quindi non dovresti investire denaro che non puoi permetterti di perdere. Dovresti essere consapevole di tutti i rischi associati al trading su valute estere e chiedere consigli a un consulente finanziario indipendente in caso di dubbi. Le performance passate non sono indicative di risultati futuri.'
+            'footer.risk_title': 'Avvertenza sui rischi:',
+            'footer.risk_text': 'il trading su CFD/Forex/metalli è ad alto rischio e può comportare la perdita totale del capitale. I contenuti all\'interno di questa pagina, non sono consulenza finanziaria né promessa di rendimento. Performance passate e backtest non garantiscono risultati futuri. L’operatività avviene solo tramite broker regolamentati; Il team di Linearity FX non riceve pagamenti diretti dagli utenti.'
         },
 
         en: {
@@ -160,7 +160,7 @@ window.LinearityI18n = {
             'guide.manual.button': 'Guide',
             'guide.support.title': 'Need Help?',
             'guide.support.description': 'If you encounter difficulties during the connection phases or have additional questions, our support team is available on Telegram to assist you.',
-            'guide.support.telegram': 'Telegram Support',
+            'guide.support.telegram': 'Channel Telegram',
             'guide.support.contact': 'Contact Us',
 
             // Results section
@@ -189,7 +189,7 @@ window.LinearityI18n = {
             'contact.description': 'Have questions? We\'re here to help',
             'contact.telegram.title': 'Telegram',
             'contact.telegram.description': 'The fastest way to contact us',
-            'contact.telegram.link': 'Go to group',
+            'contact.telegram.link': 'Go to channel',
             'contact.telegram.group': 'https://t.me/linearityfx_en',
             'contact.support.title': 'Support',
             'contact.support.description': 'Do you need help? We are ready to assist you with any issue you may encounter during registration and strategy setup. Contact us at our dedicated support on Telegram and join the group to not miss any updates on the LinearityFX world.',
