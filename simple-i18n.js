@@ -6,12 +6,12 @@ window.LinearityI18n = {
         it: {
             // Page meta
             'page.title': 'Linearity FX - Sistema di Trading Automatizzato | linearityfx.tech',
-            'page.description': 'Linearity FX: strategia di trading automatizzata con 10 anni di profitti comprovati. Visita il sito per iscriverti e partecipare al progetto LinearityFX',
+            'page.description': 'Linearity FX: strategia di trading automatizzata.Visita il sito per iscriverti e partecipare al progetto LinearityFX',
             'page.keywords': 'linearity fx, trading automatico, forex, algoritmi trading, sistema professionale, telegram trading, linearityfx.tech',
             'page.og.title': 'Linearity FX - Sistema di Trading Automatizzato | linearityfx.tech',
-            'page.og.description': 'Linearity FX: strategia di trading automatizzata con 10 anni di profitti comprovati. Visita il sito per iscriverti e partecipare al progetto LinearityFX',
+            'page.og.description': 'Linearity FX: strategia di trading automatizzata. Visita il sito per iscriverti e partecipare al progetto LinearityFX',
             'page.twitter.title': 'Linearity FX - Sistema Trading Automatizzato',
-            'page.twitter.description': '10 anni di profitti comprovati nel trading automatizzato. Unisciti oggi!',
+            'page.twitter.description': 'Unisciti oggi!',
             
             // Navigation
             'nav.home': 'Home',
@@ -40,7 +40,7 @@ window.LinearityI18n = {
             'about.card5.title': 'Gratuito',
             'about.card5.description': 'Non pagherai mai alcuna quota associativa, il sistema cederà una piccola parte del profitto settimanale al team LinearityFX, se quella settimana non ti faremo guadagnare la tua commissione verrà azzerata.',
             'about.card6.title': 'Trasparenza Completa',
-            'about.card6.description': 'Accesso in tempo reale a tutti i movimenti, statistiche dettagliate e performance del sistema. Nessun segreto, tutto sotto i tuoi occhi con 10 anni di track record verificabile.',
+            'about.card6.description': 'Accesso in tempo reale a tutti i movimenti, statistiche dettagliate e performance del sistema. Nessun segreto, tutto sotto i tuoi occhi.',
 
             // Guide section
             'guide.title': 'Guida alla Connessione',
@@ -65,7 +65,7 @@ window.LinearityI18n = {
             // Results section
             'results.title': 'I Nostri Risultati',
             'results.description': 'I risultati mostrati sono verificati da MyFXBook e rappresentano performance reali dei nostri conti di trading.',
-            'results.footer': 'Ecco risultati conseguiti dal sistema LinearityFX applicato ai dati storici del mercato.  N.B. I risultati passati non sono hanno valore predittivo.',
+            'results.footer': 'Ecco risultati conseguiti dal sistema LinearityFX applicato ai dati storici del mercato.  N.B. I risultati passati non hanno valore previsionale.',
             'results.backtest1': 'Backtest<br>da 1 Gennaio 2020 al 1 Agosto 2025',
             'results.backtest2': 'Backtest<br>da 1 Gennaio 2015 al 1 Agosto 2025',
             'results.backtest_button': 'Backtest',
@@ -91,7 +91,7 @@ window.LinearityI18n = {
             'contact.telegram.link': 'Vai al canale',
             'contact.telegram.group': 'https://t.me/linearityfx_ita',
             'contact.support.title': 'Supporto',
-            'contact.support.description': 'Hai bisogno di aiuto? Siamo pronti ad assisterti per ogni problematica che potresti riscontrare nella registrazione e impostazione della strategia. Contattaci al supporto dedicato su Telegram ed entra a far parte del gruppo per non perdere nessun aggiornamento sul mondo LinearityFX.',
+            'contact.support.description': 'Hai bisogno di aiuto? Siamo pronti ad assisterti per ogni problematica che potresti riscontrare nella registrazione e impostazione della strategia. Contattaci al supporto dedicato su Telegram ed entra a far parte del gruppo per non perdere nessun aggiornamento su LinearityFX.',
             'contact.support.link': 'https://t.me/linearity_support',
             'contact.support.button': 'Supporto Dedicato',
             'contact.collaborate.title': 'Collabora con noi',
